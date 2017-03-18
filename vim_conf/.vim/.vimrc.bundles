@@ -1,0 +1,72 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+
+" Nerdtree
+Plugin 'scrooloose/nerdtree'
+let NERDTreeWinPos='left'
+let NERDTreeWinSize=30
+map <F2> :NERDTreeToggle<CR>
+
+" Vim-airline
+" Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" 底端显示两行
+set laststatus=2
+let g:airline_theme='simple'
+let g:airline_powerline_fonts=1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" markdown 目录自动生成
+Plugin 'mzlogin/vim-markdown-toc'
+
+" PEP8 indent
+Plugin 'vim-scripts/indentpython.vim'
+
+" Python auto complete
+Plugin 'Valloric/YouCompleteMe'
+" 确保了在你完成操作之后，自动补全窗口不会消失
+let g:ycm_autoclose_preview_window_after_completion=1
+" 定义了“转到定义”的快捷方式
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+" 通过安装syntastic插件，每次保存文件时Vim都会检查代码的语法：
+Plugin 'scrooloose/syntastic'
+" 还可以通过这个小巧的插件，添加PEP8代码风格检查：
+Plugin 'nvie/vim-flake8'
+" 最后，让你的代码变得更漂亮：
+let python_highlight_all=1
+syntax on
+
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
