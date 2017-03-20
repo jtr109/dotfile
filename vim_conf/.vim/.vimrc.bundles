@@ -53,6 +53,20 @@ Plugin 'nvie/vim-flake8'
 let python_highlight_all=1
 syntax on
 
+" vim-coffee-script
+" vim coffee script 在 vudle 管理下有一个 bug
+" 没法将 *.coffee 等文件的 filetype 设置为 coffee
+" 手动添加以下配置即可
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
+autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
+autocmd BufNewFile,BufRead *.litcoffee set filetype=litcoffee
+autocmd BufNewFile,BufRead *.coffee.md set filetype=litcoffee
+" Plugin 主体
+Plugin 'kchmck/vim-coffee-script'
+syntax on
+" filetype plugin indent on
+
 
 
 " All of your Plugins must be added before the following line
