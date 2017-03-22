@@ -67,6 +67,41 @@ Plugin 'kchmck/vim-coffee-script'
 syntax on
 " filetype plugin indent on
 
+" vim 全局搜索工具 ack.vim
+" 用法详见 Ack 官方文档: https://beyondgrep.com/documentation/
+Plugin 'mileszs/ack.vim'
+
+" ctrlp.vim 全局文件跳转插件
+Plugin 'kien/ctrlp.vim'
+" ctrlp 配置:
+" - Change the default mapping and the default command to invoke CtrlP:
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" - When invoked, unless a starting directory is specified, CtrlP will set its
+" local working directory according to this variable:
+let g:ctrlp_working_path_mode = 'ra'
+" 'c' - the directory of the current file.
+" 'r' - the nearest ancestor that contains one of these directories or files:
+" .git .hg .svn .bzr _darcs
+" 'a' - like c, but only if the current working directory outside of CtrlP is
+" not a direct ancestor of the directory of the current file.
+" 0 or '' (empty string) - disable this feature.
+" Define additional root markers with the g:ctrlp_root_markers option.
+" - Exclude files and directories using Vim's wildignore and CtrlP's own
+" `g:ctrlp_custom_ignore`:
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+" set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore+=*.pyc " For coding
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+  \ }
+" - Use a custom file listing command:
+" let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+" let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+
 
 
 " All of your Plugins must be added before the following line
@@ -83,4 +118,5 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
 
