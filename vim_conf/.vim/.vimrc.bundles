@@ -51,7 +51,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 " 最后，让你的代码变得更漂亮：
 let python_highlight_all=1
-syntax on
+" syntax on
 
 " vim-coffee-script
 " vim coffee script 在 vudle 管理下有一个 bug
@@ -64,7 +64,7 @@ autocmd BufNewFile,BufRead *.litcoffee set filetype=litcoffee
 autocmd BufNewFile,BufRead *.coffee.md set filetype=litcoffee
 " Plugin 主体
 Plugin 'kchmck/vim-coffee-script'
-syntax on
+" syntax on
 " filetype plugin indent on
 
 " vim 全局搜索工具 ack.vim
@@ -101,10 +101,22 @@ let g:ctrlp_custom_ignore = {
 " - Use a custom file listing command:
 " let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+" The maximum number of files to scan, set to 0 for no limit:
+" let g:ctrlp_max_files = 0
+" *'g:ctrlp_lazy_update'*
+" Set this to 1 to enable the lazy-update feature: only update the match
+" window after typing's been stopped for a certain amount of time:
+let g:ctrlp_lazy_update = 1
+" " Command to clear all ctrlp cache
+" "  *:CtrlPClearAllCaches*
+" " Delete all the cache files saved in |g:ctrlp_cache_dir| location.
+" :CtrlPClearAllCaches
+" syntax on
 
 
-
-" All of your Plugins must be added before the following line
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:

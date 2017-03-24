@@ -42,6 +42,8 @@ if filereadable(expand("~/.vim/.vimrc.coding"))
 source ~/.vim/.vimrc.coding
 endif
 
+syntax on 
+
 
 """ unicode symbols """
 
