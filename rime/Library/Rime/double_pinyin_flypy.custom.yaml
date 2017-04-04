@@ -1,0 +1,16 @@
+# double_pinyin_flypy.custom.yaml, 只对小鹤双拼生效
+patch:
+  translator/preedit_format: {}     # 输入双拼码的时候不转化为全拼码
+  # translator/dictionary: double_pinyin_flypy.extended
+
+  "switches/@0/reset": 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
+
+  # 禁用反引号的单词备选功能, 仅针对方案有效.
+  recognizer/patterns/reverse_lookup: {}
+
+engine:
+  translators:
+    - punct_translator
+    # - reverse_lookup_translator
+    - script_translator
+

@@ -4,15 +4,19 @@ au BufNewFile,BufRead *.py
   \ set tabstop=4 |
   \ set softtabstop=4 |
   \ set shiftwidth=4 |
-  \ set textwidth=79 |
   \ set expandtab |
+  \ set textwidth=79 |
   \ set autoindent |
   \ set fileformat=unix
 
-au BufNewFile,BufRead *.js, *.html, *.css, *.coffee
+au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue
 \ set tabstop=2 |
 \ set softtabstop=2 |
-\ set shiftwidth=2
+\ set shiftwidth=2 |
+\ set expandtab |
+\ set autoindent |
+\ set textwidth=0 |
+\ set fileformat=unix
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 

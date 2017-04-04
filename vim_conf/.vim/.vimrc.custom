@@ -8,15 +8,15 @@ set relativenumber
 syntax enable
 set syntax=on
 
-" indent
-set expandtab
-set tabstop=4
-
-" auto indent
-set autoindent
-set cindent
-set smartindent
-set shiftwidth=4
+" " indent
+" set expandtab
+" set tabstop=4
+" 
+" " auto indent
+" set autoindent
+" set cindent
+" set smartindent
+" set shiftwidth=4
 
 " set code
 set enc=utf-8
@@ -41,10 +41,11 @@ set foldlevel=99
 set clipboard=unnamed
 
 """ search """
-" " Case insensitive
-" set ignorecase
-" " Automatically switch to a case-sensitive search
+" Case insensitive
+set ignorecase
+" Automatically switch to a case-sensitive search
 " if any capital letters was used
+" Should be set with ignorecase
 set smartcase
 
 """ 关于 highlight search """
@@ -53,7 +54,7 @@ set smartcase
 " " 临时关闭: `:noh`, `:nohlsearch`
 " " Press Space to turn off highlighting and clear any message already displayed.
 " :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-" " Press F4 to toggle highlighting on/off, and show current value.
-" :noremap <F4> :set hlsearch! hlsearch?<CR>
+" Press F4 to toggle highlighting on/off, and show current value.
+:noremap <F4> :set hlsearch! hlsearch?<CR>
 " " Or, press return to temporarily get out of the highlighted search.
 " :nnoremap <CR> :nohlsearch<CR><CR>

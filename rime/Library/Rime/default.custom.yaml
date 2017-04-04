@@ -1,0 +1,51 @@
+# default.custom.yaml, 全局生效
+# 添加小鹤双拼到方案选单
+patch:
+  schema_list:
+    - schema: double_pinyin_flypy   # 新增小鹤双拼
+    - schema: luna_pinyin
+    - schema: cangjie5
+    - schema: luna_pinyin_fluency
+    - schema: luna_pinyin_simp
+    - schema: luna_pinyin_tw
+
+  # 中西文切換鍵的默認設置寫在 default.yaml 裏面
+  # 以下的 default.custom.yaml 在全局範圍重定義該組快速鍵
+  #
+  # 可用的按鍵有 Caps_Lock, Shift_L, Shift_R, Control_L, control_R
+  # Mac 系統上的鼠鬚管不能區分左、右，因此只有對 Shift_L, Control_L 的設定起作用
+  #
+  # 已輸入編碼時按切換鍵，可以進一步設定輸入法中西文切換的形式。
+  # 可選的臨時切換策略有三：
+  # inline_ascii 在輸入法的臨時西文編輯區內輸入字母、數字、符號、空格等，回車上屏後自動復位到中文
+  # commit_text 已輸入的候選文字上屏並切換至西文輸入模式
+  # commit_code 已輸入的編碼字符上屏並切換至西文輸入模式
+  # 設爲 noop，屏蔽該切換鍵
+  #
+  # 如果要把 Caps Lock 設爲只改變字母的大小寫而不做中西文切換，可將 Caps_Lock 對應的切換方式設爲 noop
+  # 如果要以 Caps Lock 切換到西文模式，默認輸出小寫字母，請置 ascii_composer/good_old_caps_lock: false
+  # 如果要以 Caps Lock 切換到西文模式，默認輸出大寫字母，請使用以下設置：
+  ascii_composer/good_old_caps_lock: true
+  ascii_composer/switch_key:
+    Caps_Lock: noop  # commit_code
+    Shift_L: commit_code  # noop
+    Shift_R: noop
+    Control_L: noop  # commit_code
+    Control_R: noop  # commit_code
+
+  switches:                   # 注意縮進
+    - name: ascii_mode
+      reset: 1                # reset 0 的作用是當從其他輸入方案切換到本方案時，
+      states: [ 中文, 西文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。
+    - name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；
+      states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。
+    - name: simplification
+      reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。
+      states: [ 漢字, 汉字 ]
+
+  # "switches/@0/reset": 1  # 表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
+
+punctuator:
+  # 禁用反引号在中文输入时的笔画功能
+  full_shape:
+    "`": "`"
