@@ -58,3 +58,7 @@ set smartcase
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 " " Or, press return to temporarily get out of the highlighted search.
 " :nnoremap <CR> :nohlsearch<CR><CR>
+"
+"
+"
+
