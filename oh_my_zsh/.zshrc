@@ -110,3 +110,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin
 
 # alias ctags="`brew --prefix`/bin/ctags"
+
+# alias for thefuck
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
