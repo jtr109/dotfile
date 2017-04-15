@@ -2,6 +2,10 @@
 // https://github.com/clowwindy/gfwlist2pac
 
 var domains = {
+  "tumblr.com":1,
+  "t.co":1,
+  "telegram.org":1,
+  "bandwagonhost.com":1,
   "91porn.com":1,
   "medium.com":1,
   "slack.com":1,
