@@ -1,6 +1,6 @@
 """ for coding """
 
-function MaxCharLine(mx)
+function! MaxCharLine(mx)
     " 添加80字符竖线, 由于 colorcolumn 是 7.3+ 加入的功能, 加入判断
     if exists('+colorcolumn')
       let &colorcolumn=a:mx+1
