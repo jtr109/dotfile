@@ -1,22 +1,35 @@
 """ for coding """
 
+function MaxCharLine(mx)
+    " 添加80字符竖线, 由于 colorcolumn 是 7.3+ 加入的功能, 加入判断
+    if exists('+colorcolumn')
+      let &colorcolumn=a:mx+1
+    else
+      au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    endif
+endfunction
+
+
 au BufNewFile,BufRead *.py
   \ set tabstop=4 |
   \ set softtabstop=4 |
   \ set shiftwidth=4 |
   \ set expandtab |
-  \ set textwidth=79 |
   \ set autoindent |
-  \ set fileformat=unix
+  \ set fileformat=unix |
+  \ set textwidth=79 |
+  \ call MaxCharLine(&textwidth)
 
 au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue
-\ set tabstop=2 |
-\ set softtabstop=2 |
-\ set shiftwidth=2 |
-\ set expandtab |
-\ set autoindent |
-\ set textwidth=0 |
-\ set fileformat=unix
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set textwidth=0 |
+    \ set fileformat=unix |
+    \ set textwidth=149 |
+    \ call MaxCharLine(&textwidth)
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -47,11 +60,4 @@ eof
 " au BufNewFile,BufRead *.py
 "   \ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "   \ match OverLength /\%81v.\+/
-
-" 添加80字符竖线, 由于 colorcolumn 是 7.3+ 加入的功能, 加入判断
-if exists('+colorcolumn')
-  set colorcolumn=81
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
 
