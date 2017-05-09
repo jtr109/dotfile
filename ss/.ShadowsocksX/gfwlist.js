@@ -2,6 +2,10 @@
 // https://github.com/clowwindy/gfwlist2pac
 
 var domains = {
+  "alfredworkflow.com":1,
+  "duckduckgo.com":1,
+  "artstation.com":1,
+  "slack.com":1,
   "tumblr.com":1,
   "t.co":1,
   "telegram.org":1,
