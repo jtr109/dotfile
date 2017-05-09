@@ -1,5 +1,8 @@
 """ SETTINGS """
 
+" set <leader>
+let g:mapleader = ','
+
 " set line number
 set number
 set relativenumber
@@ -47,6 +50,12 @@ set ignorecase
 " if any capital letters was used
 " Should be set with ignorecase
 set smartcase
+
+" use it if syntax highlight not work
+nnoremap <leader>s:syntax sync fromstart<CR>
+
+" break line in normal mode
+:nnoremap <NL> i<CR><ESC>
 
 """ 关于 highlight search """
 " " 开启: `:set hlsearch`
