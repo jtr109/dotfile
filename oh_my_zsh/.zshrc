@@ -117,6 +117,7 @@ eval $(thefuck --alias)
 eval $(thefuck --alias FUCK)
 
 # Proxy for Homebrew
+# It will make an error for pip
 export ALL_PROXY=socks5://127.0.0.1:1080
 
 # for libressl and openssl

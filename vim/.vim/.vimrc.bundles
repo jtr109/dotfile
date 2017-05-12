@@ -208,6 +208,9 @@ nnoremap <leader>5 :MtaJumpToOtherTag<CR>
 Plugin 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,vue'
 
+" commentary.vim
+Plugin 'tpope/vim-commentary'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
