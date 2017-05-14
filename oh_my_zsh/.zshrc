@@ -64,11 +64,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -118,7 +118,10 @@ eval $(thefuck --alias FUCK)
 
 # Proxy for Homebrew
 # It will make an error for pip
-export ALL_PROXY=socks5://127.0.0.1:1080
+# export ALL_PROXY=socks5://127.0.0.1:1080
 
 # for libressl and openssl
 export PATH="/usr/local/opt/libressl/bin:$PATH"
+
+# for new version of emacs
+alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
