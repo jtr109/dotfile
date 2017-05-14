@@ -2,6 +2,7 @@
 // https://github.com/clowwindy/gfwlist2pac
 
 var domains = {
+  "playstation.com":1,
   "alfredworkflow.com":1,
   "duckduckgo.com":1,
   "artstation.com":1,
