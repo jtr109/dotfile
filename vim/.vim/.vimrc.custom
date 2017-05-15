@@ -52,7 +52,7 @@ set ignorecase
 set smartcase
 
 " use it if syntax highlight not work
-nnoremap <leader>s:syntax sync fromstart<CR>
+nnoremap <leader>f:syntax sync fromstart<CR>
 
 " break line in normal mode
 :nnoremap <NL> i<CR><ESC>
