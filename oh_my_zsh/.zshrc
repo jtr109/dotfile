@@ -125,3 +125,12 @@ export PATH="/usr/local/opt/libressl/bin:$PATH"
 
 # for new version of emacs
 alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
+
+# for golang workspace
+export GOPATH=$HOME/mystuff/go-workspace # don't forget to change your path correctly!
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+# $GOPATH/src : Where your Go projects / programs are located
+# $GOPATH/pkg : contains every package objects
+# $GOPATH/bin : The compiled binaries home
