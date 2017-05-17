@@ -16,16 +16,19 @@ filetype on
 
 """ colorscheme """ 
 
-" solarized_termtrans must be set for beautiful background color
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-syntax enable
-colorscheme solarized
-set background=dark
+" " solarized_termtrans must be set for beautiful background color
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
+" syntax enable
+" colorscheme solarized
+" set background=dark
 
 " syntax on
 " color dracula
 
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 
 """ LINK FOR CUSTOM SETTING """
