@@ -166,7 +166,7 @@ let g:ctrlp_max_files = 0
 " *'g:ctrlp_lazy_update'*
 " Set this to 1 to enable the lazy-update feature: only update the match
 " window after typing's been stopped for a certain amount of time:
-let g:ctrlp_lazy_update = 1
+" let g:ctrlp_lazy_update = 1
 " " Command to clear all ctrlp cache
 " "  *:CtrlPClearAllCaches*
 " " Delete all the cache files saved in |g:ctrlp_cache_dir| location.
@@ -184,6 +184,7 @@ autocmd FileType vue syntax sync fromstart
   " \ syntax sync fromstart
 
 Plugin 'majutsushi/tagbar'
+let g:tagbar_sort = 0
 nmap <F3> :TagbarToggle<CR>
 map <F12> :!ctags -R --languages=python --exclude={.git,node_modules} .<CR>  
 
