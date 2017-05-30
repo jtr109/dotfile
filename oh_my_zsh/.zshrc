@@ -134,3 +134,5 @@ export PATH=$PATH:$GOROOT/bin
 # $GOPATH/src : Where your Go projects / programs are located
 # $GOPATH/pkg : contains every package objects
 # $GOPATH/bin : The compiled binaries home
+
+alias ag="ag --ignore \"tags\""

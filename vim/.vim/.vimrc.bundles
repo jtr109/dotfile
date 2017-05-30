@@ -129,6 +129,14 @@ autocmd BufNewFile,BufRead *.coffee.md set filetype=litcoffee
 " vim 全局搜索工具 ack.vim
 " 用法详见 Ack 官方文档: https://beyondgrep.com/documentation/
 Plugin 'mileszs/ack.vim'
+" not jump to the first result
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+" use ag if executable
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --ignore "tags"'
+endif
 
 " ctrlp.vim 全局文件跳转插件
 Plugin 'kien/ctrlp.vim'
@@ -203,7 +211,7 @@ Plugin 'Yggdroot/indentLine'
 
 " html tag match
 Plugin 'Valloric/MatchTagAlways'
-nnoremap <leader>5 :MtaJumpToOtherTag<CR>
+nnoremap <leader>j :MtaJumpToOtherTag<CR>
 
 " Javascript Libraries syntax
 Plugin 'othree/javascript-libraries-syntax.vim'
@@ -215,7 +223,20 @@ Plugin 'tpope/vim-commentary'
 " dracula colorcheme
 Plugin 'dracula/vim'
 
+" bufferline
+Plugin 'bling/vim-bufferline'
+" denotes whether bufferline should automatically echo to the command bar
+let g:bufferline_echo = 0
+" let g:bufferline_show_bufnr = 0  " disable the original bufferline
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnametruncate = 16
+let g:airline#extensions#tabline#fnamecollapse = 2
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
