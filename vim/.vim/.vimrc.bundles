@@ -79,6 +79,9 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " fix 'User defined completion (^U^N^P) Pattern not found'
 set shortmess+=c
 
+" 异步语法检测插件
+" Plugin 'w0rp/ale'
+
 " 通过安装syntastic插件，每次保存文件时Vim都会检查代码的语法：
 Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
@@ -86,7 +89,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 " " 1 for auto showing of location list
-"let g:syntastic_auto_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " solution of ignore syntax check because of Angular warning
@@ -182,7 +185,7 @@ let g:ctrlp_max_files = 0
 " syntax on
 
 " filetype and syntax highlight support for vue
-Plugin 'posva/vim-vue'
+" Plugin 'posva/vim-vue'
 " fix: My syntax highlighting stops working randomly
 nnoremap <leader>f :syntax sync fromstart<CR>
 autocmd FileType vue syntax sync fromstart
@@ -208,6 +211,8 @@ Plugin 'airblade/vim-gitgutter'
 
 " indent line
 Plugin 'Yggdroot/indentLine'
+let g:indentLine_char = '│'
+let g:indentLine_enabled = 1
 
 " html tag match
 Plugin 'Valloric/MatchTagAlways'
@@ -215,7 +220,7 @@ nnoremap <leader>j :MtaJumpToOtherTag<CR>
 
 " Javascript Libraries syntax
 Plugin 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'angularjs,angularui,angularuirouter,vue'
+let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,vue'
 
 " commentary.vim
 Plugin 'tpope/vim-commentary'
@@ -237,6 +242,10 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" python-mode 语法解析
+Plugin 'python-mode/python-mode'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

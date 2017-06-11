@@ -31,7 +31,6 @@ set scrolloff=3
 
 "高亮当前行
 set cursorline 
-
 set cursorcolumn
 
 " vim 自身命令行模式智能补全
