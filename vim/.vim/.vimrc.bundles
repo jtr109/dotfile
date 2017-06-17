@@ -20,9 +20,10 @@ let NERDTreeWinSize=30
 map <F2> :NERDTreeToggle<CR>
 
 " Vim-airline
-" Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" This is disabled by default; add the following to your vimrc to enable the extension:
+let g:airline#extensions#tabline#enabled = 1
 " 底端显示两行
 set laststatus=2
 let g:airline_theme='simple'
@@ -75,11 +76,14 @@ Plugin 'Valloric/YouCompleteMe'
 " 确保了在你完成操作之后，自动补全窗口不会消失
 let g:ycm_autoclose_preview_window_after_completion=1
 " 定义了“转到定义”的快捷方式
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>j  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " fix 'User defined completion (^U^N^P) Pattern not found'
 set shortmess+=c
 
-" 异步语法检测插件
+" python 跳转
+Plugin 'davidhalter/jedi-vim'
+
+" " 异步语法检测插件
 " Plugin 'w0rp/ale'
 
 " 通过安装syntastic插件，每次保存文件时Vim都会检查代码的语法：
@@ -135,7 +139,6 @@ Plugin 'mileszs/ack.vim'
 " not jump to the first result
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
-
 " use ag if executable
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore "tags"'
@@ -189,10 +192,11 @@ Plugin 'posva/vim-vue'
 " fix: My syntax highlighting stops working randomly
 nnoremap <leader>f :syntax sync fromstart<CR>
 autocmd FileType vue syntax sync fromstart
-" au BufNewFile,BufRead *.vue
-  " \ set tabstop=4 |
-  " \ set softtabstop=4 |
-  " \ syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+au BufNewFile,BufRead *.vue
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ syntax sync fromstart
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_sort = 0
@@ -211,7 +215,8 @@ Plugin 'airblade/vim-gitgutter'
 
 " indent line
 Plugin 'Yggdroot/indentLine'
-let g:indentLine_char = '│'
+" let g:indentLine_char = '│'
+let g:indentLine_char = '¦'
 let g:indentLine_enabled = 1
 
 " html tag match
@@ -232,9 +237,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'bling/vim-bufferline'
 " denotes whether bufferline should automatically echo to the command bar
 let g:bufferline_echo = 1
-let g:bufferline_show_bufnr = 0  " disable the original bufferline
-
-let g:airline#extensions#tabline#enabled = 1
+" let g:bufferline_show_bufnr = 0  " disable the original bufferline
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#formatter = 'default'
@@ -245,6 +248,31 @@ let g:airline#extensions#tabline#fnamecollapse = 2
 
 " " python-mode 语法解析
 " Plugin 'python-mode/python-mode'
+
+" " tern - Javascript syntax compiler
+" Plugin 'ternjs/tern_for_vim'
+
+" commenter
+Plugin 'scrooloose/nerdcommenter'
+filetype plugin on
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
+Plugin 'pangloss/vim-javascript'
+let g:javascript_plugin_jsdoc = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
