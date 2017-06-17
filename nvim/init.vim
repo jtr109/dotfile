@@ -20,6 +20,17 @@ if filereadable(expand("~/.config/nvim/plugin.vim"))
 source ~/.config/nvim/plugin.vim
 endif
 
+if filereadable(expand("~/.config/nvim/colorscheme.vim"))
+source ~/.config/nvim/colorscheme.vim
+endif
+
+" Initialize plugin system
+call plug#end()
+
+" " set syntax bright
+" syntax enable
+" set syntax=on
+
 if filereadable(expand("~/.config/nvim/coding.vim"))
 source ~/.config/nvim/coding.vim
 endif
@@ -27,14 +38,3 @@ endif
 if filereadable(expand("~/.config/nvim/custom.vim"))
 source ~/.config/nvim/custom.vim
 endif
-
-if filereadable(expand("~/.config/nvim/colorscheme.vim"))
-source ~/.config/nvim/colorscheme.vim
-endif
-
-" set syntax bright
-syntax enable
-set syntax=on
-
-" Initialize plugin system
-call plug#end()

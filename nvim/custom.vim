@@ -47,7 +47,7 @@ set mouse=a
 
 """ search """
 " Case insensitive
-" set ignorecase
+set ignorecase
 " Automatically switch to a case-sensitive search
 " if any capital letters was used
 " Should be set with ignorecase

@@ -7,3 +7,4 @@ Ln -s -f $(cd `dirname $0`; pwd)/vim/.vim/.vimrc.custom ~/.vim
 ln -s -f $(cd `dirname $0`; pwd)/vim/.vim/.vimrc.coding ~/.vim
 ln -s -f $(cd `dirname $0`; pwd)/vim/.vim/.vimrc.bundles ~/.vim
 ln -s -f $(cd `dirname $0`; pwd)/vim/.ackrc ~
+ln -s -f $(cd `dirname $0`; pwd)/nvim ~/.config
