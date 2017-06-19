@@ -240,3 +240,11 @@ Plug 'kchmck/vim-coffee-script'
 
 " vim-surround
 Plug 'tpope/vim-surround'
+
+" vim respeat
+" Support the surround register repeat
+Plug 'tpope/vim-repeat'
+
+" fugitive.vim
+Plug 'tpope/vim-fugitive'
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
