@@ -3,7 +3,7 @@
 function! MaxCharLine(mx)
     " 添加80字符竖线, 由于 colorcolumn 是 7.3+ 加入的功能, 加入判断
     if exists('+colorcolumn')
-      let &colorcolumn=a:mx+1
+      let &colorcolumn=a:mx
     else
       au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     endif
@@ -20,8 +20,9 @@ au BufNewFile,BufRead *.py
   \ set expandtab |
   \ set autoindent |
   \ set fileformat=unix |
-  \ set textwidth=79 |
-  \ call MaxCharLine(&textwidth)
+  \ set textwidth=120 |
+  \ call MaxCharLine(&textwidth) |
+  \ filetype indent on
 
 au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue
     \ set tabstop=2 |
@@ -31,7 +32,7 @@ au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue
     \ set autoindent |
     \ set textwidth=0 |
     \ set fileformat=unix |
-    \ set textwidth=149 |
+    \ set textwidth=150 |
     \ call MaxCharLine(&textwidth)
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/

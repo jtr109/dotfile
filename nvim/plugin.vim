@@ -49,16 +49,28 @@ let g:airline_right_alt_sep = ''
 " let g:airline_right_alt_sep = '⮃'
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
+" " set guifont
+" set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+" set guifont=Monaco\ for\ Powerline:h12
+" set guifontwide=Monaco\ for\ Powerline:h12
 
 " markdown 目录自动生成
 Plug 'mzlogin/vim-markdown-toc'
 
-" Python auto complete
-Plug 'Valloric/YouCompleteMe'
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py --clang-completer --tern-completer
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 " 确保了在你完成操作之后，自动补全窗口不会消失
 let g:ycm_autoclose_preview_window_after_completion=1
 " 定义了“转到定义”的快捷方式
-map <leader>j  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " " " fix 'User defined completion (^U^N^P) Pattern not found'
 " " set shortmess+=c
 
@@ -70,6 +82,7 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
 \   'html': ['proselint'],
 \   'javascript': ['eslint'],
+\   'coffeescript': ['coffeelint'],
 \   'css': ['stylelint'],
 \   'scss': ['stylelint'],
 \   'sass': ['stylelint'],
@@ -77,18 +90,36 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'vim': ['vint'],
 \}
-" show errors and warnings in statusline
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-set statusline=%{LinterStatus()}
+" ignore flask8 length error
+let g:ale_python_flake8_args='--max-line-length=120'
+let g:ale_lint_delay=500  " 200 default
+
+" " 通过安装syntastic插件，每次保存文件时Vim都会检查代码的语法：
+" Plug 'scrooloose/syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" " " 1 for auto showing of location list
+" " let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" " solution of ignore syntax check because of Angular warning
+" " but :SyntasticCheck can still be run for syntax checking
+" " more solutions can be find below:
+" " https://github.com/vim-syntastic/syntastic/issues/240
+" let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+" " let g:syntastic_html_tidy_ignore_errors = [
+" "   \ 'plain text isn''t allowed in <head> elements',
+" "   \ '<base> escaping malformed URI reference',
+" "   \ 'discarding unexpected <body>',
+" "   \ '<script> escaping malformed URI reference',
+" "   \ '</head> isn''t allowed in <body> elements',
+" "   \ 'trimming empty',
+" "   \ 'proprietary attribute',
+" "   \ '',
+" "   \ '<img> lacks "alt" attribute'
+" "   \ ]
 
 " vim 全局搜索工具 ack.vim
 " 用法详见 Ack 官方文档: https://beyondgrep.com/documentation/
@@ -180,7 +211,7 @@ let g:indentLine_enabled = 1
 
 " html tag match highlight
 Plug 'Valloric/MatchTagAlways'
-nnoremap <leader>j :MtaJumpToOtherTag<CR>
+nnoremap <leader>% :MtaJumpToOtherTag<CR>
 
 " commentary.vim
 Plug 'tpope/vim-commentary'
@@ -188,8 +219,7 @@ Plug 'tpope/vim-commentary'
 " bufferline
 Plug 'bling/vim-bufferline'
 " denotes whether bufferline should automatically echo to the command bar
-let g:bufferline_echo = 1
-" let g:bufferline_show_bufnr = 0  " disable the original bufferline
+let g:bufferline_echo = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#formatter = 'default'
@@ -197,10 +227,16 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:bufferline_show_bufnr = 0  " disable the original bufferline
 
-Plug 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,vue'
+" Plug 'othree/javascript-libraries-syntax.vim'
+" let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,vue'
 
 " git file change tips
 Plug 'airblade/vim-gitgutter'
 
+" vim-coffee-script
+Plug 'kchmck/vim-coffee-script'
+
+" vim-surround
+Plug 'tpope/vim-surround'

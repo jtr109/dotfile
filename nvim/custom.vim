@@ -52,3 +52,6 @@ set ignorecase
 " if any capital letters was used
 " Should be set with ignorecase
 set smartcase
+
+" map :b#
+:noremap <leader>b :b#<CR>
