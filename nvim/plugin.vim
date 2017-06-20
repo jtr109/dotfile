@@ -70,7 +70,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 " 确保了在你完成操作之后，自动补全窗口不会消失
 let g:ycm_autoclose_preview_window_after_completion=1
 " 定义了“转到定义”的快捷方式
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " " " fix 'User defined completion (^U^N^P) Pattern not found'
 " " set shortmess+=c
 
