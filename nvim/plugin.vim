@@ -248,3 +248,6 @@ Plug 'tpope/vim-repeat'
 " fugitive.vim
 Plug 'tpope/vim-fugitive'
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+
+" easy motion
+Plug 'easymotion/vim-easymotion'
