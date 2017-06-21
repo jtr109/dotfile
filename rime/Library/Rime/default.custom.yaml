@@ -9,6 +9,10 @@ patch:
     - schema: luna_pinyin_simp
     - schema: luna_pinyin_tw
 
+  # key_binder/bindings:
+  # # hotkey switch
+  #  - { when: always, accept: Alt+space, toggle: ascii_mode }
+
   # 中西文切換鍵的默認設置寫在 default.yaml 裏面
   # 以下的 default.custom.yaml 在全局範圍重定義該組快速鍵
   #
