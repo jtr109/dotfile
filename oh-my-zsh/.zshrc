@@ -137,11 +137,18 @@ export PATH=$PATH:$GOROOT/bin
 
 alias ag="ag --ignore \"tags\""
 
-alias rebase_upstream="export CURRENT_BRANCH_NAME=`git branch | grep \* | cut -d ' ' -f2` && git checkout master && git pull upstream master && git checkout $CURRENT_BRANCH_NAME && git rebase master"
 export PATH="/usr/local/opt/node@6/bin:$PATH"
 
 function upall () {
 	upgrade_oh_my_zsh
 	brew update && brew upgrade && brew cleanup && brew cask cleanup && brew cask outdated
 	cd $HOME/.tmux && git pull && cd -
+}
+
+function rebup () {
+	export CURRENT_BRANCH_NAME=`git branch | grep \* | cut -d ' ' -f2`
+	git checkout master
+	git pull upstream master
+	git checkout $CURRENT_BRANCH_NAME
+	git rebase master
 }
