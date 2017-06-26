@@ -5,14 +5,6 @@ let g:mapleader = ','
 set number
 set relativenumber
 
-" set font in MacVim
-if has('gui_macvim')
-  set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
-  " set guioptions
-  set guioptions-=r
-  set guioptions-=L
-  set guioptions-=T
-endif
 " font wide for utf-8
 " not sure for working well
 if has('guifontwide')
@@ -70,3 +62,16 @@ set smartcase
 
 " map :b#
 :noremap <leader>b :b#<CR>
+
+""""""""""""""""""" Config necessary for Vim only """"""""""""""""""""""""""""""
+" set backspace
+set backspace=indent,eol,start
+
+" set font in MacVim
+if has('gui_macvim')
+  set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+  " set guioptions
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions-=T
+endif
