@@ -152,3 +152,9 @@ function rebup () {
 	git checkout $CURRENT_BRANCH_NAME
 	git rebase master
 }
+
+funtion cpr () {
+	export CURRENT_BRANCH_NAME=`git branch | grep \* | cut -d ' ' -f2`
+	git push origin $CURRENT_BRANCH_NAME
+	hub pull-request -o -b "demlution/bazaar4:master"
+}
