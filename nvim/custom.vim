@@ -8,10 +8,16 @@ set relativenumber
 " set font in MacVim
 if has('gui_macvim')
   set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+  " set guioptions
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions-=T
 endif
 " font wide for utf-8
 " not sure for working well
-set guifontwide=Monaco:h12
+if has('guifontwide')
+  set guifontwide=Monaco:h12
+endif
 set linespace=2
 
 " set code
