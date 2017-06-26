@@ -5,6 +5,15 @@ let g:mapleader = ','
 set number
 set relativenumber
 
+" set font in MacVim
+if has('gui_macvim')
+  set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+endif
+" font wide for utf-8
+" not sure for working well
+set guifontwide=Monaco:h12
+set linespace=2
+
 " set code
 set enc=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
