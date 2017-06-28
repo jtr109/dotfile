@@ -1,6 +1,3 @@
-" set <leader>
-let g:mapleader = ','
-
 " set line number
 set number
 set relativenumber
@@ -10,7 +7,7 @@ set relativenumber
 if has('guifontwide')
   set guifontwide=Monaco:h12
 endif
-set linespace=2
+" set linespace=2
 
 " set code
 set enc=utf-8
