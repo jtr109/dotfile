@@ -140,9 +140,9 @@ alias ag="ag --ignore \"tags\""
 export PATH="/usr/local/opt/node@6/bin:$PATH"
 
 function upall () {
+	cd $HOME/.tmux && git pull && cd -
 	upgrade_oh_my_zsh
 	brew update && brew upgrade && brew cleanup && brew cask cleanup && brew cask outdated
-	cd $HOME/.tmux && git pull && cd -
 }
 
 function rebup () {
