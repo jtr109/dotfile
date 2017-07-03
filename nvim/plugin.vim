@@ -191,10 +191,6 @@ nmap <F3> :TagbarToggle<CR>
 map <F12> :!ctags -R --languages=python --exclude={.git,node_modules} .<CR>  
 " TODO: 加入其他语言的 tags
 
-Plug 'alvan/vim-closetag'
-" filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue"
-
 " auto complete html tabs
 Plug 'alvan/vim-closetag'
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -248,6 +244,7 @@ Plug 'tpope/vim-repeat'
 " fugitive.vim
 Plug 'tpope/vim-fugitive'
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+cnoreabbrev Gca Gcommit -v -a
 
 " easy motion
 Plug 'easymotion/vim-easymotion'
