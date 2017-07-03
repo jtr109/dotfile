@@ -142,7 +142,8 @@ export PATH="/usr/local/opt/node@6/bin:$PATH"
 function upall () {
 	cd $HOME/.tmux && git pull && cd -
 	upgrade_oh_my_zsh
-	brew update && brew upgrade && brew cleanup && brew cask cleanup && brew cask outdated
+	brew update && brew upgrade && brew cleanup && brew cask cleanup  # && brew cask outdated  # `brew cu` can be used now.
+	brew cu
 }
 
 function rebup () {
@@ -150,11 +151,13 @@ function rebup () {
 	git checkout master
 	git pull upstream master
 	git checkout $CURRENT_BRANCH_NAME
+	# echo $(git_current_branch) | xargs git checkout
 	git rebase master
 }
 
 funtion cpr () {
 	export CURRENT_BRANCH_NAME=`git branch | grep \* | cut -d ' ' -f2`
 	git push origin $CURRENT_BRANCH_NAME
+	# echo $(git_current_branch) | xargs git checkout
 	hub pull-request -o -b "demlution/bazaar4:master"
 }
