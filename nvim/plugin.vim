@@ -62,8 +62,8 @@ function! BuildYCM(info)
   " - name:   name of the plugin
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py --clang-completer --tern-completer
+  if a:info.status == 'installed' || a:info.force || a:info.status == 'updated'
+    !~/.local/share/nvim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer
   endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -254,3 +254,9 @@ let g:EasyMotion_smartcase = 1
 map <Leader><Leader>l <Plug>(easymotion-lineforward)
 map <Leader><Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+" vim-scripts / searchcomplete
+Plug 'vim-scripts/searchcomplete'
+
+" PEP8 indent
+Plug 'vim-scripts/indentpython.vim'
