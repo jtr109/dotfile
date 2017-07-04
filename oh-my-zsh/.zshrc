@@ -142,7 +142,7 @@ export PATH="/usr/local/opt/node@6/bin:$PATH"
 function upall () {
 	cd $HOME/.tmux && git pull && cd -
 	upgrade_oh_my_zsh
-	brew update && brew upgrade && brew cleanup && brew cask cleanup  # && brew cask outdated  # `brew cu` can be used now.
+	ALL_PROXY=socks5://127.0.0.1:1080 brew update && ALL_PROXY=socks5://127.0.0.1:1080 brew upgrade && brew cleanup && brew cask cleanup  # && brew cask outdated  # `brew cu` can be used now.
 	brew cu
 }
 
