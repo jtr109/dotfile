@@ -1,3 +1,9 @@
+set completeopt=menuone,preview
+
+" supertab
+Plug 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 " Nerdtree
 Plug 'scrooloose/nerdtree'
 let NERDTreeWinPos='left'
@@ -67,15 +73,18 @@ function! BuildYCM(info)
   endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-" 确保了在你完成操作之后，自动补全窗口不会消失
-let g:ycm_autoclose_preview_window_after_completion=1
+" " 确保了在你完成操作之后，自动补全窗口不会消失
+" let g:ycm_autoclose_preview_window_after_completion=1
 " 定义了“转到定义”的快捷方式
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " " " fix 'User defined completion (^U^N^P) Pattern not found'
 " " set shortmess+=c
+let g:ycm_seed_identifiers_with_syntax = 1    "开启关键字语法检测
 
 " " python 跳转
 " Plug 'davidhalter/jedi-vim'
+" " let g:jedi#completions_command = "<Tab>"
+" " let g:jedi#completions_enabled = 0
 
 " 异步语法检测插件
 Plug 'w0rp/ale'
@@ -198,7 +207,8 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue"
 
 " [, {, ( 自动匹配
 Plug 'jiangmiao/auto-pairs'
-
+inoremap <expr><BS> pumvisible()? neocomplete#smart_close_popup()."\<C-h>" 
+    \: AutoPairsDelete()
 " indent line
 Plug 'Yggdroot/indentLine'
 " let g:indentLine_char = '│'
@@ -237,9 +247,9 @@ Plug 'kchmck/vim-coffee-script'
 " vim-surround
 Plug 'tpope/vim-surround'
 
-" vim respeat
-" Support the surround register repeat
-Plug 'tpope/vim-repeat'
+" " vim respeat
+" " Support the surround register repeat
+" Plug 'tpope/vim-repeat'
 
 " fugitive.vim
 Plug 'tpope/vim-fugitive'
@@ -260,3 +270,11 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " PEP8 indent
 Plug 'vim-scripts/indentpython.vim'
+
+" " Deoplete
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"     let g:deoplete#enable_at_startup = 1
+"     " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"     " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" endif
