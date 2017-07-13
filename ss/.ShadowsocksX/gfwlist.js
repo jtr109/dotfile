@@ -2,6 +2,8 @@
 // https://github.com/clowwindy/gfwlist2pac
 
 var domains = {
+  "gitbook.com":1,
+  "gitbooks.io":1,
   "cdninstagram.com":1,
   "instagram.com":1,
   "playstation.com":1,
