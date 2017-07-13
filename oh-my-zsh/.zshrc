@@ -84,7 +84,9 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+# # Brew bottle USTC mirror
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 export PATH=$PATH:/usr/local/opt/redis-3.2.6/src
 export PATH=$PATH:/usr/local/mysql/bin
@@ -156,8 +158,8 @@ function rebup () {
 }
 
 funtion cpr () {
-	export CURRENT_BRANCH_NAME=`git branch | grep \* | cut -d ' ' -f2`
-	git push origin $CURRENT_BRANCH_NAME
+  export CURRENT_BRANCH_NAME=$(git_current_branch)
+	git push origin -set-upstream origin $CURRENT_BRANCH_NAME
 	# echo $(git_current_branch) | xargs git checkout
 	hub pull-request -o -b "demlution/bazaar4:master"
 }
