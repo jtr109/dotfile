@@ -16,10 +16,6 @@ let g:mapleader = ','
 """""""""""""""""""""""""""" Color Scheme and Theme """"""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-" call plug#begin('~/.vim/plugged')  " for vim
-call plug#begin('~/.local/share/nvim/plugged')  " for neovim
-
 if filereadable(expand("~/.config/nvim/plugin.vim"))
 source ~/.config/nvim/plugin.vim
 endif
@@ -27,9 +23,6 @@ endif
 if filereadable(expand("~/.config/nvim/colorscheme.vim"))
 source ~/.config/nvim/colorscheme.vim
 endif
-
-" Initialize plugin system
-call plug#end()
 
 " " set syntax bright
 " syntax enable

@@ -1,18 +1,61 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Plugin Configurations                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+" call plug#begin('~/.vim/plugged')  " for vim
+call plug#begin('~/.local/share/nvim/plugged')  " for neovim
+Plug 'airblade/vim-gitgutter'  " git file change tips
+Plug 'bling/vim-bufferline' " bufferline
+Plug 'easymotion/vim-easymotion'  " easy motion
+" Plug 'jmcantrell/vim-virtualenv'  " virtualenv
+Plug 'davidhalter/jedi-vim'
+" Plug 'ervandew/supertab'
+Plug 'mileszs/ack.vim'
+Plug 'mzlogin/vim-markdown-toc'  " markdown 目录自动生成
+" Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'  " commentary.vim
+Plug 'tpope/vim-fugitive'  " fugitive.vim
+Plug 'tpope/vim-repeat'  " vim respeat
+Plug 'tpope/vim-surround'  " vim-surround
+Plug 'Valloric/MatchTagAlways'  " html tag match highlight
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/indentpython.vim'  " PEP8 indent
+" Plug 'vim-scripts/searchcomplete'
+Plug 'w0rp/ale'  " 异步语法检测插件
+Plug 'kchmck/vim-coffee-script'  " vim-coffee-script
+Plug 'kien/ctrlp.vim'  " ctrlp.vim 全局文件跳转插件
+Plug 'posva/vim-vue'  " filetype and syntax highlight support for vue
+Plug 'majutsushi/tagbar'
+Plug 'mhartington/oceanic-next'
+Plug 'alvan/vim-closetag'  " auto complete html tabs
+Plug 'jiangmiao/auto-pairs'  " [, {, ( 自动匹配
+Plug 'Yggdroot/indentLine'  " indent line
+
+if has('nvim')
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'othree/csscomplete.vim'  " css extension
+  Plug 'roxma/nvim-completion-manager'
+  Plug 'roxma/python-support.nvim'
+  Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}  " (optional) javascript completion
+else
+  Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+endif
+call plug#end()  " Initialize plugin system
+
 " set completeopt=menuone,preview
 
  " supertab
-" Plug 'ervandew/supertab'
 " let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Nerdtree
-Plug 'scrooloose/nerdtree'
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
 map <F2> :NERDTreeToggle<CR>
 
 " Vim-airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 " This is disabled by default; add the following to your vimrc to enable the extension:
 let g:airline#extensions#tabline#enabled = 1
 " 底端显示两行
@@ -60,19 +103,17 @@ let g:airline_symbols.readonly = '⭤'
 " set guifont=Monaco\ for\ Powerline:h12
 " set guifontwide=Monaco\ for\ Powerline:h12
 
-" markdown 目录自动生成
-Plug 'mzlogin/vim-markdown-toc'
 
-" function! BuildYCM(info)
-"   " info is a dictionary with 3 fields
-"   " - name:   name of the plugin
-"   " - status: 'installed', 'updated', or 'unchanged'
-"   " - force:  set on PlugInstall! or PlugUpdate!
-"   if a:info.status == 'installed' || a:info.force || a:info.status == 'updated'
-"     !~/.local/share/nvim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer
-"   endif
-" endfunction
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force || a:info.status == 'updated'
+    !~/.local/share/nvim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer
+  endif
+endfunction
+
 " " " 确保了在你完成操作之后，自动补全窗口不会消失
 " " let g:ycm_autoclose_preview_window_after_completion=1
 " " " 定义了“转到定义”的快捷方式
@@ -93,12 +134,9 @@ Plug 'mzlogin/vim-markdown-toc'
 " nnoremap <leader><Tab> :call SwitchTrigger()<CR>
 
 " python 跳转
-Plug 'davidhalter/jedi-vim'
 " let g:jedi#completions_command = "<Tab>"
 let g:jedi#completions_enabled = 0
 
-" 异步语法检测插件
-Plug 'w0rp/ale'
 let g:ale_linters = {
 \   'html': ['proselint'],
 \   'javascript': ['eslint'],
@@ -115,7 +153,6 @@ let g:ale_python_flake8_args='--max-line-length=120'
 let g:ale_lint_delay=500  " 200 default
 
 " " 通过安装syntastic插件，每次保存文件时Vim都会检查代码的语法：
-" Plug 'scrooloose/syntastic'
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
@@ -143,7 +180,6 @@ let g:ale_lint_delay=500  " 200 default
 
 " vim 全局搜索工具 ack.vim
 " 用法详见 Ack 官方文档: https://beyondgrep.com/documentation/
-Plug 'mileszs/ack.vim'
 " not jump to the first result
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
@@ -152,8 +188,6 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore "tags"'
 endif
 
-" ctrlp.vim 全局文件跳转插件
-Plug 'kien/ctrlp.vim'
 " ctrlp 配置:
 " - Change the default mapping and the default command to invoke CtrlP:
 let g:ctrlp_map = '<c-p>'
@@ -194,8 +228,6 @@ let g:ctrlp_max_files = 0
 " " Delete all the cache files saved in |g:ctrlp_cache_dir| location.
 " :CtrlPClearAllCaches
 
-" filetype and syntax highlight support for vue
-Plug 'posva/vim-vue'
 " fix: My syntax highlighting stops working randomly
 nnoremap <leader>f :syntax sync fromstart<CR>
 autocmd FileType vue syntax sync fromstart
@@ -205,36 +237,24 @@ au BufNewFile,BufRead *.vue
   \ set softtabstop=2 |
   \ syntax sync fromstart
 
-Plug 'majutsushi/tagbar'
 let g:tagbar_sort = 0
 nmap <F3> :TagbarToggle<CR>
 map <F12> :!ctags -R --languages=python --exclude={.git,node_modules} .<CR>  
 " TODO: 加入其他语言的 tags
 
-" auto complete html tabs
-Plug 'alvan/vim-closetag'
 " filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue"
 
-" [, {, ( 自动匹配
-Plug 'jiangmiao/auto-pairs'
 inoremap <expr><BS> pumvisible()? neocomplete#smart_close_popup()."\<C-h>" 
     \: AutoPairsDelete()
-" indent line
-Plug 'Yggdroot/indentLine'
+"
 " let g:indentLine_char = '│'
 let g:indentLine_char = '¦'
 let g:indentLine_enabled = 1
 
-" html tag match highlight
-Plug 'Valloric/MatchTagAlways'
 nnoremap <leader>% :MtaJumpToOtherTag<CR>
 
-" commentary.vim
-Plug 'tpope/vim-commentary'
 
-" bufferline
-Plug 'bling/vim-bufferline'
 " denotes whether bufferline should automatically echo to the command bar
 let g:bufferline_echo = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -246,29 +266,12 @@ let g:airline#extensions#tabline#fnamecollapse = 2
 " let g:airline#extensions#tabline#buffer_idx_mode = 1
 " let g:bufferline_show_bufnr = 0  " disable the original bufferline
 
-" Plug 'othree/javascript-libraries-syntax.vim'
 " let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,vue'
 
-" git file change tips
-Plug 'airblade/vim-gitgutter'
-
-" vim-coffee-script
-Plug 'kchmck/vim-coffee-script'
-
-" vim-surround
-Plug 'tpope/vim-surround'
-
-" " vim respeat
-" " Support the surround register repeat
-Plug 'tpope/vim-repeat'
-
-" fugitive.vim
-Plug 'tpope/vim-fugitive'
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 cnoreabbrev Gca Gcommit -v -a
 
-" easy motion
-Plug 'easymotion/vim-easymotion'
+
 let g:EasyMotion_smartcase = 1
 " map <Leader>j <Plug>(easymotion-j)
 " map <Leader>k <Plug>(easymotion-k)
@@ -276,15 +279,9 @@ map <Leader><Leader>l <Plug>(easymotion-lineforward)
 map <Leader><Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
-" " vim-scripts / searchcomplete
-" Plug 'vim-scripts/searchcomplete'
-
-" PEP8 indent
-Plug 'vim-scripts/indentpython.vim'
 
 " " Deoplete
 " if has('nvim')
-"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "     let g:deoplete#enable_at_startup = 1
 "     " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "     " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -292,22 +289,14 @@ Plug 'vim-scripts/indentpython.vim'
 
 " 
 if has('nvim')
-  Plug 'roxma/nvim-completion-manager'
-  Plug 'roxma/python-support.nvim'
   " for python completions
   let g:python_support_python2_requirements = add(get(g:,'python_support_python2_requirements',[]),'jedi')
   let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'jedi')
   " " language specific completions on markdown file
   " let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'mistune')
-  " (optional) javascript completion
-  Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-  " css extension
-  Plug 'othree/csscomplete.vim'
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
   set shortmess+=c
   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 endif
 
-" " virtualenv
-" Plug 'jmcantrell/vim-virtualenv'
