@@ -158,8 +158,8 @@ function rebup () {
 }
 
 funtion cpr () {
-  export CURRENT_BRANCH_NAME=$(git_current_branch)
-	git push origin -set-upstream origin $CURRENT_BRANCH_NAME
+	# export CURRENT_BRANCH_NAME=$(git_current_branch)
+	git push --set-upstream origin $(git_current_branch)
 	# echo $(git_current_branch) | xargs git checkout
 	hub pull-request -o -b "demlution/bazaar4:master"
 }

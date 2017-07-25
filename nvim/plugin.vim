@@ -1,8 +1,8 @@
-set completeopt=menuone,preview
+" set completeopt=menuone,preview
 
-" supertab
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-n>"
+ " supertab
+" Plug 'ervandew/supertab'
+" let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
@@ -63,28 +63,39 @@ let g:airline_symbols.readonly = '⭤'
 " markdown 目录自动生成
 Plug 'mzlogin/vim-markdown-toc'
 
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force || a:info.status == 'updated'
-    !~/.local/share/nvim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer
-  endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-" " 确保了在你完成操作之后，自动补全窗口不会消失
-" let g:ycm_autoclose_preview_window_after_completion=1
-" 定义了“转到定义”的快捷方式
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" " " fix 'User defined completion (^U^N^P) Pattern not found'
-" " set shortmess+=c
-let g:ycm_seed_identifiers_with_syntax = 1    "开启关键字语法检测
+" function! BuildYCM(info)
+"   " info is a dictionary with 3 fields
+"   " - name:   name of the plugin
+"   " - status: 'installed', 'updated', or 'unchanged'
+"   " - force:  set on PlugInstall! or PlugUpdate!
+"   if a:info.status == 'installed' || a:info.force || a:info.status == 'updated'
+"     !~/.local/share/nvim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer
+"   endif
+" endfunction
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" " " 确保了在你完成操作之后，自动补全窗口不会消失
+" " let g:ycm_autoclose_preview_window_after_completion=1
+" " " 定义了“转到定义”的快捷方式
+" " map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" " " " fix 'User defined completion (^U^N^P) Pattern not found'
+" " " set shortmess+=c
+" let g:ycm_python_binary_path = 'python'
+" let g:ycm_seed_identifiers_with_syntax = 1    "开启关键字语法检测
+" " let g:ycm_min_num_of_chars_for_completion = 99 " This disables the popup
+" " let g:ycm_key_invoke_completion = '<Tab>'
+" function! SwitchTrigger()
+"     if g:ycm_auto_trigger == 0
+"         let g:ycm_auto_trigger = 1  "turn on YCM
+"     else
+"         let g:ycm_auto_trigger = 0  " turn off YCM
+"     endif
+" endfunction
+" nnoremap <leader><Tab> :call SwitchTrigger()<CR>
 
-" " python 跳转
-" Plug 'davidhalter/jedi-vim'
-" " let g:jedi#completions_command = "<Tab>"
-" " let g:jedi#completions_enabled = 0
+" python 跳转
+Plug 'davidhalter/jedi-vim'
+" let g:jedi#completions_command = "<Tab>"
+let g:jedi#completions_enabled = 0
 
 " 异步语法检测插件
 Plug 'w0rp/ale'
@@ -93,7 +104,7 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'coffeescript': ['coffeelint'],
 \   'css': ['stylelint'],
-\   'scss': ['stylelint'],
+\   'scss': ['scsslint'],
 \   'sass': ['stylelint'],
 \   'json': ['jsonlint'],
 \   'python': ['flake8'],
@@ -249,7 +260,7 @@ Plug 'tpope/vim-surround'
 
 " " vim respeat
 " " Support the surround register repeat
-" Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " fugitive.vim
 Plug 'tpope/vim-fugitive'
@@ -278,3 +289,25 @@ Plug 'vim-scripts/indentpython.vim'
 "     " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "     " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " endif
+
+" 
+if has('nvim')
+  Plug 'roxma/nvim-completion-manager'
+  Plug 'roxma/python-support.nvim'
+  " for python completions
+  let g:python_support_python2_requirements = add(get(g:,'python_support_python2_requirements',[]),'jedi')
+  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'jedi')
+  " " language specific completions on markdown file
+  " let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'mistune')
+  " (optional) javascript completion
+  Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+  " css extension
+  Plug 'othree/csscomplete.vim'
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+  set shortmess+=c
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+endif
+
+" " virtualenv
+" Plug 'jmcantrell/vim-virtualenv'
