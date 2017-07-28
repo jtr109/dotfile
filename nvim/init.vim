@@ -24,12 +24,12 @@ if filereadable(expand("~/.config/nvim/colorscheme.vim"))
 source ~/.config/nvim/colorscheme.vim
 endif
 
-" " set syntax bright
-" syntax enable
-" set syntax=on
-
 if filereadable(expand("~/.config/nvim/coding.vim"))
 source ~/.config/nvim/coding.vim
+endif
+
+if filereadable(expand("~/.config/nvim/mapping.vim"))
+source ~/.config/nvim/mapping.vim
 endif
 
 if filereadable(expand("~/.config/nvim/custom.vim"))

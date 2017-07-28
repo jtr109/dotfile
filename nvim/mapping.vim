@@ -1,0 +1,9 @@
+""" For mark-mothion
+nnoremap ` '
+nnoremap `` ''
+nnoremap ' `
+nnoremap '' ``
+vnoremap ` '
+vnoremap `` ''
+vnoremap ' `
+vnoremap '' ``

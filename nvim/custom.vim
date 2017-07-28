@@ -60,6 +60,12 @@ set smartcase
 " map :b#
 :noremap <leader>b :b#<CR>
 
+" " set guifont
+" set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+" set guifont=Monaco\ for\ Powerline:h12
+" set guifontwide=Monaco\ for\ Powerline:h12
+
+
 """"""""""""""""""" Config necessary for Vim only """"""""""""""""""""""""""""""
 " set backspace
 set backspace=indent,eol,start
