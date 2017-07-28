@@ -106,6 +106,7 @@ export LC_ALL=en_US.UTF-8
 # virtualenv for demlution project
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 source /usr/local/bin/virtualenvwrapper.sh
 
 # add pg_config to PATH for psycopg2 installation
