@@ -14,5 +14,8 @@ endif
 syntax enable
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
+" let g:oceanic_next_highlight_current_line = 1
 colorscheme OceanicNext
+hi CursorLineNR guifg=#ffffff "guibg=#1b2b34
 let g:airline_theme='oceanicnext'
+
