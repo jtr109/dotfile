@@ -3,7 +3,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " set runtimepath+=~/.vim/bundle/oceanic-next
-set runtimepath+=~/.local/share/nvim/plugged/oceanic-next
+" set runtimepath+=~/.local/share/nvim/plugged/oceanic-next
 " " For Neovim 0.1.3 and 0.1.4
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Or if you have Neovim >= 0.1.5

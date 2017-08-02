@@ -25,15 +25,31 @@ au BufNewFile,BufRead *.py
   \ filetype indent on
 
 au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set textwidth=0 |
-    \ set fileformat=unix |
-    \ set textwidth=150 |
-    \ call MaxCharLine(&textwidth)
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ set shiftwidth=2 |
+  \ set expandtab |
+  \ set autoindent |
+  \ set fileformat=unix |
+  \ set textwidth=150 |
+  \ call MaxCharLine(&textwidth)
+
+autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+au BufNewFile,BufRead *.vue
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ syntax sync fromstart
+
+autocmd FileType vim
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ set shiftwidth=2 |
+  \ set expandtab |
+  \ set autoindent |
+  " \ set fileformat=unix |
+  \ set textwidth=80 |
+  \ call MaxCharLine(&textwidth)
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 

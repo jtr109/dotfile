@@ -6,6 +6,7 @@ function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
 
+
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force || a:info.status == 'updated'
@@ -24,13 +25,15 @@ call plug#begin('~/.local/share/nvim/plugged')  " for neovim
 
 Plug 'airblade/vim-gitgutter'  " git file change tips
 Plug 'bling/vim-bufferline' " bufferline
+Plug 'chemzqm/wxapp.vim'
 Plug 'easymotion/vim-easymotion'  " easy motion
 " Plug 'jmcantrell/vim-virtualenv'  " virtualenv
 Plug 'davidhalter/jedi-vim'
+Plug 'elzr/vim-json' " add to fix the double quote bug of indentLine in json file
 " Plug 'ervandew/supertab'
 Plug 'mileszs/ack.vim'
 Plug 'mzlogin/vim-markdown-toc'  " markdown 目录自动生成
-" Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'scrooloose/nerdtree'
 " Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'  " commentary.vim
@@ -43,8 +46,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/indentpython.vim'  " PEP8 indent
 " Plug 'vim-scripts/searchcomplete'
 Plug 'w0rp/ale'  " 异步语法检测插件
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'kchmck/vim-coffee-script'  " vim-coffee-script
 Plug 'kien/ctrlp.vim'  " ctrlp.vim 全局文件跳转插件
+Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'  " filetype and syntax highlight support for vue
 Plug 'majutsushi/tagbar'
 Plug 'mhartington/oceanic-next'
@@ -73,7 +78,7 @@ call plug#end()  " Initialize plugin system
 
 """ alvan/vim-closetag """
 " filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue,*.wxml"
 
 """ bling/vim-bufferline """
 " denotes whether bufferline should automatically echo to the command bar
@@ -145,7 +150,7 @@ let g:ctrlp_max_files = 0
 """ majutsushi/tagbar """
 let g:tagbar_sort = 0
 nmap <F3> :TagbarToggle<CR>
-map <F12> :!ctags -R --languages=python --exclude={.git,node_modules} .<CR>  
+map <F12> :!ctags -R --languages=python --exclude={.git,node_modules} .<CR>
 " TODO: 加入其他语言的 tags
 
 """ mileszs/ack.vim """
@@ -158,17 +163,11 @@ if executable('ag')
 endif
 
 """ othree/javascript-libraries-syntax.vim """
-" let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,vue'
+let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,vue'
 
 """ posva/vim-vue """
 " fix: My syntax highlighting stops working randomly
 nnoremap <leader>f :syntax sync fromstart<CR>
-autocmd FileType vue syntax sync fromstart
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
-au BufNewFile,BufRead *.vue
-  \ set tabstop=2 |
-  \ set softtabstop=2 |
-  \ syntax sync fromstart
 
 """ roxma/nvim-completion-manager """
 if has('nvim')
@@ -184,11 +183,11 @@ if has('nvim')
 endif
 
 """ Shougo/deoplete.nvim """
-" if has('nvim')
-"     let g:deoplete#enable_at_startup = 1
-"     " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"     " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" endif
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+    " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+endif
 
 """ scrooloose/nerdtree """
 let NERDTreeWinPos='left'
@@ -263,7 +262,7 @@ endif
 " let g:airline_right_sep = '◀'
 let g:airline_symbols.crypt = '🔒'
 " let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '␤'
 " let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.maxlinenr = '☰'
 " let g:airline_symbols.maxlinenr = ''
@@ -279,16 +278,16 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 """ old vim-powerline symbols
 " let g:airline_left_sep = '⮀'
 " let g:airline_left_alt_sep = '⮁'
 " let g:airline_right_sep = '⮂'
 " let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
+" let g:airline_symbols.branch = '⭠'
+" let g:airline_symbols.readonly = '⭤'
 
 """ Valloric/MatchTagAlways """
 nnoremap <leader>% :MtaJumpToOtherTag<CR>
@@ -307,10 +306,17 @@ let g:ale_linters = {
 \}
 " ignore flask8 length error
 let g:ale_python_flake8_args='--max-line-length=120'
-let g:ale_lint_delay=500  " 200 default
+" let g:ale_lint_delay=500  " 200 default
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <leader>ek <Plug>(ale_previous_wrap)
+nmap <silent> <leader>ej <Plug>(ale_next_wrap)
+
+""" junegunn/fzf """
+" set rtp+=/usr/local/opt/fzf
 
 """ Yggdroot/indentLine """
 " let g:indentLine_char = '│'
 let g:indentLine_char = '¦'
 let g:indentLine_enabled = 1
-
+" autocmd Filetype json let g:indentLine_setConceal = 0
+let g:vim_json_syntax_conceal = 0
