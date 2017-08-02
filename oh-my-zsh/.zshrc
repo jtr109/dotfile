@@ -164,3 +164,5 @@ funtion cpr () {
 	# echo $(git_current_branch) | xargs git checkout
 	hub pull-request -o -b "demlution/bazaar4:master"
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
