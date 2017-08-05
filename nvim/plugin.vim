@@ -308,6 +308,10 @@ let g:ale_linters = {
 let g:ale_python_flake8_args='--max-line-length=120'
 " let g:ale_lint_delay=500  " 200 default
 let g:airline#extensions#ale#enabled = 1
+let g:ale_pattern_options = {
+\   '\.wxml$': {'ale_enabled': 0},
+\   '\.wxss$': {'ale_enabled': 0}
+\}
 nmap <silent> <leader>ek <Plug>(ale_previous_wrap)
 nmap <silent> <leader>ej <Plug>(ale_next_wrap)
 

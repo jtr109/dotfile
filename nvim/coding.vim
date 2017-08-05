@@ -24,7 +24,7 @@ au BufNewFile,BufRead *.py
   \ call MaxCharLine(&textwidth) |
   \ filetype indent on
 
-au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue
+au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue,*.wxml,*.wxss
   \ set tabstop=2 |
   \ set softtabstop=2 |
   \ set shiftwidth=2 |
