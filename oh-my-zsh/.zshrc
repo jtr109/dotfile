@@ -142,6 +142,10 @@ alias ag="ag --ignore \"tags\""
 
 export PATH="/usr/local/opt/node@6/bin:$PATH"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
 function upall () {
 	cd $HOME/.tmux && git pull && cd -
 	upgrade_oh_my_zsh
@@ -164,5 +168,3 @@ funtion cpr () {
 	# echo $(git_current_branch) | xargs git checkout
 	hub pull-request -o -b "demlution/bazaar4:master"
 }
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
