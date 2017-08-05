@@ -146,6 +146,7 @@ let g:ctrlp_max_files = 0
 """  *:CtrlPClearAllCaches*
 """ Delete all the cache files saved in |g:ctrlp_cache_dir| location.
 """ :CtrlPClearAllCaches
+nnoremap <Leader>pb :CtrlPBuffer<CR><Space>
 
 """ majutsushi/tagbar """
 let g:tagbar_sort = 0
