@@ -13,6 +13,9 @@ au BufNewFile,BufRead *.scm
   \ set tabstop=4 |
   \ set softtabstop=4 |
 
+au BufNewFile,BufRead *.md
+  \ set conceallevel=0
+
 au BufNewFile,BufRead *.py
   \ set tabstop=4 |
   \ set softtabstop=4 |
