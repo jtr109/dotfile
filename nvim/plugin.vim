@@ -26,11 +26,11 @@ call plug#begin('~/.local/share/nvim/plugged')  " for neovim
 Plug 'airblade/vim-gitgutter'  " git file change tips
 Plug 'bling/vim-bufferline' " bufferline
 Plug 'chemzqm/wxapp.vim'
-Plug 'easymotion/vim-easymotion'  " easy motion
-" Plug 'jmcantrell/vim-virtualenv'  " virtualenv
 Plug 'davidhalter/jedi-vim'
+Plug 'easymotion/vim-easymotion'  " easy motion
 Plug 'elzr/vim-json' " add to fix the double quote bug of indentLine in json file
 " Plug 'ervandew/supertab'
+" Plug 'godlygeek/tabular'  " required for vim-markdown
 Plug 'mileszs/ack.vim'
 Plug 'mzlogin/vim-markdown-toc'  " markdown 目录自动生成
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -146,7 +146,7 @@ let g:ctrlp_max_files = 0
 """  *:CtrlPClearAllCaches*
 """ Delete all the cache files saved in |g:ctrlp_cache_dir| location.
 """ :CtrlPClearAllCaches
-nnoremap <Leader>pb :CtrlPBuffer<CR><Space>
+nnoremap <Leader>ll :CtrlPBuffer<CR><Space>
 
 """ majutsushi/tagbar """
 let g:tagbar_sort = 0
@@ -168,7 +168,7 @@ let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,vue'
 
 """ posva/vim-vue """
 " fix: My syntax highlighting stops working randomly
-nnoremap <leader>f :syntax sync fromstart<CR>
+nnoremap <leader>ff :syntax sync fromstart<CR>
 
 """ roxma/nvim-completion-manager """
 if has('nvim')
@@ -308,7 +308,7 @@ let g:ale_linters = {
 " ignore flask8 length error
 let g:ale_python_flake8_args='--max-line-length=120'
 " let g:ale_lint_delay=500  " 200 default
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 let g:ale_pattern_options = {
 \   '\.wxml$': {'ale_enabled': 0},
 \   '\.wxss$': {'ale_enabled': 0}
