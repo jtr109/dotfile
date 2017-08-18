@@ -150,7 +150,7 @@ function upall () {
 	cd $HOME/.tmux && git pull && cd -
 	upgrade_oh_my_zsh
 	ALL_PROXY=socks5://127.0.0.1:1080 brew update && ALL_PROXY=socks5://127.0.0.1:1080 brew upgrade && brew cleanup && brew cask cleanup  # && brew cask outdated  # `brew cu` can be used now.
-	brew cu
+	ALL_PROXY=socks5://127.0.0.1:1080 brew cu -a
 }
 
 function rebup () {
