@@ -5,8 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -153,6 +153,13 @@ function upall () {
 	ALL_PROXY=socks5://127.0.0.1:1080 brew cu -a
 }
 
+# function upall () {
+# 	cd $HOME/.tmux && git pull && cd -
+# 	upgrade_oh_my_zsh
+# 	brew update && brew upgrade && brew cleanup && brew cask cleanup  # && brew cask outdated  # `brew cu` can be used now.
+# 	brew cu -a
+# }
+
 function rebup () {
 	export CURRENT_BRANCH_NAME=`git branch | grep \* | cut -d ' ' -f2`
 	git checkout master
@@ -168,3 +175,9 @@ funtion cpr () {
 	# echo $(git_current_branch) | xargs git checkout
 	hub pull-request -o -b "demlution/bazaar4:master"
 }
+export PATH="/urs/local/opt/curl/bin:$PATH"
+
+
+# for bazaar4 build
+export SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
+export PHANTOMJS_CDNURL=https://npm.taobao.org/dist/phantomjs
