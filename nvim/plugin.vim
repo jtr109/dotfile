@@ -46,7 +46,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/indentpython.vim'  " PEP8 indent
 " Plug 'vim-scripts/searchcomplete'
 Plug 'w0rp/ale'  " 异步语法检测插件
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+" Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'kchmck/vim-coffee-script'  " vim-coffee-script
 Plug 'kien/ctrlp.vim'  " ctrlp.vim 全局文件跳转插件
 Plug 'pangloss/vim-javascript'
