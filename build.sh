@@ -10,4 +10,4 @@ ln -s -f $(cd `dirname $0`; pwd)/vim/.ackrc $HOME
 ln -s -f $(cd `dirname $0`; pwd)/tern/.tern-config $HOME
 ln -s -f $(cd `dirname $0`; pwd)/nvim/init.vim $HOME/.vimrc  # use same config with neovim
 ln -s -f $(cd `dirname $0`; pwd)/nvim $HOME/.config
-ln -s -f $(cd `dirname $0`; pwd)/tmux/.tmux.conf.local $HOME
+# ln -s -f $(cd `dirname $0`; pwd)/tmux/.tmux.conf.local $HOME
