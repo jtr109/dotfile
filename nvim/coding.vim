@@ -10,8 +10,11 @@ function! MaxCharLine(mx)
 endfunction
 
 au BufNewFile,BufRead *.scm
-  \ set tabstop=4 |
-  \ set softtabstop=4 |
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ set shiftwidth=2 |
+  \ set expandtab |
+  \ set autoindent |
 
 au BufNewFile,BufRead *.md
   \ set conceallevel=0
@@ -27,7 +30,7 @@ au BufNewFile,BufRead *.py
   \ call MaxCharLine(&textwidth) |
   \ filetype indent on
 
-au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue,*.wxml,*.wxss
+au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue,*.wxml,*.wxss,*json
   \ set tabstop=2 |
   \ set softtabstop=2 |
   \ set shiftwidth=2 |
