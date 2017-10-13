@@ -27,6 +27,7 @@ Plug 'airblade/vim-gitgutter'  " git file change tips
 " Plug 'bling/vim-bufferline' " bufferline
 Plug 'chemzqm/wxapp.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'dracula/vim'
 Plug 'easymotion/vim-easymotion'  " easy motion
 Plug 'elzr/vim-json' " add to fix the double quote bug of indentLine in json file
 " Plug 'ervandew/supertab'
