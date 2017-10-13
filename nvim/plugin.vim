@@ -24,7 +24,7 @@ endfunction
 call plug#begin('~/.local/share/nvim/plugged')  " for neovim
 
 Plug 'airblade/vim-gitgutter'  " git file change tips
-Plug 'bling/vim-bufferline' " bufferline
+" Plug 'bling/vim-bufferline' " bufferline
 Plug 'chemzqm/wxapp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'  " easy motion
@@ -81,16 +81,17 @@ call plug#end()  " Initialize plugin system
 " filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue,*.wxml"
 
-""" bling/vim-bufferline """
-" denotes whether bufferline should automatically echo to the command bar
-let g:bufferline_echo = 0
+" """ bling/vim-bufferline """
+" " denotes whether bufferline should automatically echo to the command bar
+" let g:bufferline_echo = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
-" let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 " let g:bufferline_show_bufnr = 0  " disable the original bufferline
 
 """ davidhalter/jedi-vim """
