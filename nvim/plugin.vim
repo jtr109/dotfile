@@ -31,6 +31,7 @@ Plug 'easymotion/vim-easymotion'  " easy motion
 Plug 'elzr/vim-json' " add to fix the double quote bug of indentLine in json file
 " Plug 'ervandew/supertab'
 " Plug 'godlygeek/tabular'  " required for vim-markdown
+Plug 'leafgarland/typescript-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mzlogin/vim-markdown-toc'  " markdown 目录自动生成
 Plug 'othree/javascript-libraries-syntax.vim'
