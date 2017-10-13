@@ -181,3 +181,6 @@ export PATH="/urs/local/opt/curl/bin:$PATH"
 # for bazaar4 build
 export SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
 export PHANTOMJS_CDNURL=https://npm.taobao.org/dist/phantomjs
+
+# add plugin autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
