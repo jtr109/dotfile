@@ -86,7 +86,7 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.vue,*.wxml"
 " " denotes whether bufferline should automatically echo to the command bar
 " let g:bufferline_echo = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#tab_nr_type = 0 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#buffer_nr_show = 1
