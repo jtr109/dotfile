@@ -31,6 +31,7 @@ Plug 'dracula/vim'
 Plug 'easymotion/vim-easymotion'  " easy motion
 Plug 'elzr/vim-json' " add to fix the double quote bug of indentLine in json file
 " Plug 'ervandew/supertab'
+Plug 'fisadev/vim-isort'  " python import sort with isort
 " Plug 'godlygeek/tabular'  " required for vim-markdown
 Plug 'leafgarland/typescript-vim'
 Plug 'mileszs/ack.vim'
@@ -89,7 +90,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 0 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -109,6 +110,9 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 """ ervandew/supertab """
 " let g:SuperTabDefaultCompletionType = "<c-n>"
+
+""" fisadev/vim-isort """
+" let g:vim_isort_map = ''  " disable the <c-i> map for isort
 
 """ kien/ctrlp.vim """
 """ - Change the default mapping and the default command to invoke CtrlP:
@@ -178,6 +182,8 @@ if has('nvim')
   " for python completions
   let g:python_support_python2_requirements = add(get(g:,'python_support_python2_requirements',[]),'jedi')
   let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'jedi')
+  let g:python_support_python2_requirements = add(get(g:,'python_support_python2_requirements',[]),'isort')
+  let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'isort')
   " " language specific completions on markdown file
   " let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'mistune')
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
