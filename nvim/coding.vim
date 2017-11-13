@@ -40,12 +40,12 @@ au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue,*.wxml,*.wxss,*json
   \ set textwidth=150 |
   \ call MaxCharLine(&textwidth)
 
-autocmd FileType vue syntax sync fromstart
+" autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
-au BufNewFile,BufRead *.vue
-  \ set tabstop=2 |
-  \ set softtabstop=2 |
-  \ syntax sync fromstart
+" au BufNewFile,BufRead *.vue
+"   \ set tabstop=2 |
+"   \ set softtabstop=2 |
+"   \ syntax sync fromstart
 
 autocmd FileType vim
   \ set tabstop=2 |
@@ -56,6 +56,11 @@ autocmd FileType vim
   " \ set fileformat=unix |
   \ set textwidth=80 |
   \ call MaxCharLine(&textwidth)
+
+au FileType gitcommit
+  " \ syn match Comment "^%.*" |
+  \ syn match gitcommitComment "^%.*" |
+  \ syn match _ "^#.*"
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
