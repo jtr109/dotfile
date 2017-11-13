@@ -7,3 +7,5 @@ vnoremap ` '
 vnoremap `` ''
 vnoremap ' `
 vnoremap '' ``
+
+nnoremap <Leader>m :let @/='\<'.expand("<cword>").'\>'<CR>

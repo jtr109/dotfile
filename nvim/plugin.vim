@@ -306,6 +306,7 @@ nnoremap <leader>% :MtaJumpToOtherTag<CR>
 let g:ale_linters = {
 \   'html': ['proselint'],
 \   'javascript': ['eslint'],
+\   'vue': ['eslint'],
 \   'coffeescript': ['coffeelint'],
 \   'css': ['stylelint'],
 \   'scss': ['scsslint'],
