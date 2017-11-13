@@ -163,18 +163,14 @@ function upall () {
 # }
 
 function rebup () {
-	export CURRENT_BRANCH_NAME=`git branch | grep \* | cut -d ' ' -f2`
 	git checkout master
 	git pull upstream master
-	git checkout $CURRENT_BRANCH_NAME
-	# echo $(git_current_branch) | xargs git checkout
+	git checkout -
 	git rebase master
 }
 
 funtion cpr () {
-	# export CURRENT_BRANCH_NAME=$(git_current_branch)
 	git push --set-upstream origin $(git_current_branch)
-	# echo $(git_current_branch) | xargs git checkout
 	hub pull-request -o -b "demlution/bazaar4:master"
 }
 export PATH="/urs/local/opt/curl/bin:$PATH"
@@ -186,3 +182,17 @@ export PHANTOMJS_CDNURL=https://npm.taobao.org/dist/phantomjs
 
 # add plugin autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+function build_env () {
+	/usr/local/bin/pg_ctl -D /usr/local/var/postgres start
+	/usr/local/opt/redis-3.2.6/src/redis-server >/dev/null 2>&1 < /dev/null &
+	sudo /usr/local/bin/nginx -c /usr/local/etc/nginx/nginx.conf
+}
+
+function upgrade_nvim () {
+	cd /opt
+	sudo curl -LO --proxy 127.0.0.1:1087 https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+	sudo tar xzf ./nvim-macos.tar.gz
+	sudo rm ./nvim-macos.tar.gz
+	cd -
+}
