@@ -171,7 +171,8 @@ function rebup () {
 
 funtion cpr () {
 	git push --set-upstream origin $(git_current_branch)
-	hub pull-request -o -b "demlution/bazaar4:master"
+	# hub pull-request -o -b "demlution/bazaar4:master"
+	git remote get-url --push upstream | sed 's/^.*[\/:]\([^\/]*\)\/\([^\/]*\)\.git$/"\1\/\2:master"/g' | xargs hub pull-request -o -f -b
 }
 export PATH="/urs/local/opt/curl/bin:$PATH"
 
