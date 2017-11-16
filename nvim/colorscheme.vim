@@ -21,6 +21,7 @@ color dracula
 """ custom highlight
 " hi CursorLineNR guifg=#ffffff "guibg=#1b2b34
 " hi diffRemoved ctermfg=231 ctermbg=NONE cterm=None guifg=#f1fa8c guibg=NONE gui=NONE
+hi Normal guibg=black
 hi link diffRemoved DiffDelete
 hi link diffAdded DiffAdd
 
