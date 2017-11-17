@@ -57,11 +57,6 @@ autocmd FileType vim
   \ set textwidth=80 |
   \ call MaxCharLine(&textwidth)
 
-au FileType gitcommit
-  " \ syn match Comment "^%.*" |
-  \ syn match gitcommitComment "^%.*" |
-  \ syn match _ "^#.*"
-
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " 编码设置为 utf-8
