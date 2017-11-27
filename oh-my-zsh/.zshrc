@@ -155,7 +155,7 @@ function upall () {
 	brew cleanup
 	brew cask cleanup
 	# && brew cask outdated  # `brew cu` can be used now.
-	date
+	printf 'Finish at ' && date
 }
 
 # function upall () {
