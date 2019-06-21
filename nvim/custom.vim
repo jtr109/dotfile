@@ -17,8 +17,8 @@ set termencoding=utf-8
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
 set scrolloff=3 
 " " 高亮当前行列, 十字光标
-" set cursorline 
-" set cursorcolumn
+set cursorline 
+set cursorcolumn
 
 " vim 自身命令行模式智能补全
 set wildmenu

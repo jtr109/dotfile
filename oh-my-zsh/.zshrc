@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+ZSH_DISABLE_COMPFIX=true
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -50,7 +52,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx)
+plugins=(
+  git
+  osx
+  rust
+)
 
 # User configuration
 
@@ -130,17 +136,17 @@ export PATH="/usr/local/opt/libressl/bin:$PATH"
 alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
 
 # for golang workspace
-export GOPATH=$HOME/mystuff/go-workspace # don't forget to change your path correctly!
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+# export GOROOT=/usr/local/go
+export GOPATH=$HOME/gopath
+export GOBIN=$GOPATH/bin
+export PATH=$GOPATH/bin:$PATH:$GOROOT/bin
 # $GOPATH/src : Where your Go projects / programs are located
 # $GOPATH/pkg : contains every package objects
 # $GOPATH/bin : The compiled binaries home
 
-alias ag="ag --ignore \"tags\""
+export PATH="$HOME/.cargo/bin:$PATH"
 
-export PATH="/usr/local/opt/node@6/bin:$PATH"
+alias ag="ag --ignore \"tags\""
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -166,10 +172,10 @@ function upall () {
 # }
 
 function rebup () {
-	git checkout master
-	git pull upstream master
-	git checkout -
-	git rebase master
+	git checkout master \
+	&& git pull upstream master \
+	&& git checkout - \
+	&& git rebase master
 }
 
 funtion cpr () {
@@ -189,7 +195,9 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 function build_env () {
 	/usr/local/bin/pg_ctl -D /usr/local/var/postgres start
-	/usr/local/opt/redis-3.2.6/src/redis-server >/dev/null 2>&1 < /dev/null &
+	# /usr/local/opt/redis-3.2.6/src/redis-server >/dev/null 2>&1 < /dev/null &
+        # docker run --name demlution-redis -p 6379:6379 -d redis redis-server
+	docker start demlution-redis
 	sudo /usr/local/bin/nginx -c /usr/local/etc/nginx/nginx.conf
 }
 
@@ -200,3 +208,26 @@ function upgrade_nvim () {
 	sudo rm ./nvim-macos.tar.gz
 	cd -
 }
+export PATH="/urs/local/opt/node@8/bin:$PATH"
+
+export demlution_root=$HOME/mystuff/demlution
+
+function update_dwapp_test () {
+	mkdir -p $demlution_root/temp
+	cp $demlution_root/dwapp_test/project.config.json $demlution_root/temp 2>/dev/null
+	rm -rf $demlution_root/dwapp_test
+	mkdir -p $demlution_root/dwapp_test
+	mv $demlution_root/temp/project.config.json $demlution_root/dwapp_test 2>/dev/null
+	cd $demlution_root/dwapp_test
+	ls -t $HOME/Downloads/*.zip | head -1 | xargs unzip 1>/dev/null
+	cd - 1>/dev/null
+}
+
+export PATH="/Users/jtr109/.cargo/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+# for MacPorts
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+

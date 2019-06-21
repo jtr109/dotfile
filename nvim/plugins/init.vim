@@ -23,39 +23,73 @@ endfunction
 " call plug#begin('~/.vim/plugged')  " for vim
 call plug#begin('~/.local/share/nvim/plugged')  " for neovim
 
+"""""""""""""""""""""""""""""""""""""""" Git """""""""""""""""""""""""""""""""""
 Plug 'airblade/vim-gitgutter'  " git file change tips
-" Plug 'bling/vim-bufferline' " bufferline
-Plug 'chemzqm/wxapp.vim'
+" Plug 'tpope/vim-fugitive'  " fugitive.vim
+
+"""""""""""""""""""""""""""""""""""""" Theme """""""""""""""""""""""""""""""""""
+
+if filereadable(expand("~/.config/nvim/plugins/theme-plugins.vim"))
+source ~/.config/nvim/plugins/theme-plugins.vim
+endif
+
+""""""""""""""""""""""""""""""""""""" Wxapp """""""""""""""""""""""""""""""""""
+" Plug 'chemzqm/wxapp.vim'
+
+""""""""""""""""""""""""""""""""""""" Python """""""""""""""""""""""""""""""""""
 Plug 'davidhalter/jedi-vim'
-Plug 'dracula/vim'
-Plug 'easymotion/vim-easymotion'  " easy motion
-Plug 'elzr/vim-json' " add to fix the double quote bug of indentLine in json file
-" Plug 'ervandew/supertab'
 Plug 'fisadev/vim-isort'  " python import sort with isort
-" Plug 'godlygeek/tabular'  " required for vim-markdown
-Plug 'leafgarland/typescript-vim'
-Plug 'mileszs/ack.vim'
-Plug 'mzlogin/vim-markdown-toc'  " markdown 目录自动生成
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'scrooloose/nerdtree'
-" Plug 'scrooloose/syntastic'
+" Plug 'vim-python/python-syntax'
+" Plug 'plytophogy/vim-virtualenv'
+Plug 'vim-scripts/indentpython.vim'  " PEP8 indent
+
+""""""""""""""""""""""""""""""""""""" Coding """""""""""""""""""""""""""""""""""
+" Plug 'scrooloose/syntastic'  " 语法检查
+Plug 'w0rp/ale'  " 异步语法检测插件
+
+""""""""""""""""""""""""""""""""""""" Common """""""""""""""""""""""""""""""""""
+Plug 'easymotion/vim-easymotion'  " easy motion
+" Plug 'bling/vim-bufferline' " bufferline
 Plug 'tpope/vim-commentary'  " commentary.vim
-Plug 'tpope/vim-fugitive'  " fugitive.vim
 Plug 'tpope/vim-repeat'  " vim respeat
 Plug 'tpope/vim-surround'  " vim-surround
-Plug 'Valloric/MatchTagAlways'  " html tag match highlight
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/indentpython.vim'  " PEP8 indent
 " Plug 'vim-scripts/searchcomplete'
-Plug 'w0rp/ale'  " 异步语法检测插件
+
+""""""""""""""""""""""""""""" File Management """"""""""""""""""""""""""""""""""
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
 " Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-Plug 'kchmck/vim-coffee-script'  " vim-coffee-script
 Plug 'kien/ctrlp.vim'  " ctrlp.vim 全局文件跳转插件
+
+""""""""""""""""""""""""""""""""""""" JSON """"""""""""""""""""""""""""""""""""""
+Plug 'elzr/vim-json' " add to fix the double quote bug of indentLine in json file
+" Plug 'ervandew/supertab'
+
+""""""""""""""""""""""""""""""""""""" Go """"""""""""""""""""""""""""""""""""""""
+Plug 'fatih/vim-go'
+
+""""""""""""""""""""""""""""""""""""" Markdown """"""""""""""""""""""""""""""""""
+" Plug 'godlygeek/tabular'  " required for vim-markdown
+" Plug 'mzlogin/vim-markdown-toc'  " markdown 目录自动生成
+
+"""""""""""""""""""""""""""""" JavaScript & TypeScript """"""""""""""""""""""""""
+" Plug 'leafgarland/typescript-vim'
+" Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'Quramy/vim-js-pretty-template'
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'  " filetype and syntax highlight support for vue
+
+""""""""""""""""""""""""""""""""""""" Rust """"""""""""""""""""""""""""""""""""""
+
+if filereadable(expand("~/.config/nvim/plugins/rust.vim"))
+source ~/.config/nvim/plugins/rust.vim
+endif
+
+""""""""""""""""""""""""""""""""""""" HTML """"""""""""""""""""""""""""""""""""""
+Plug 'Valloric/MatchTagAlways'  " html tag match highlight
+Plug 'mattn/emmet-vim'  " emmet for vim
+
 Plug 'majutsushi/tagbar'
-Plug 'mhartington/oceanic-next'
 Plug 'alvan/vim-closetag'  " auto complete html tabs
 Plug 'jiangmiao/auto-pairs'  " [, {, ( 自动匹配
 Plug 'Yggdroot/indentLine'  " indent line
@@ -132,6 +166,7 @@ let g:ctrlp_working_path_mode = 'ra'
 """ `g:ctrlp_custom_ignore`:
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*/node_modules/*,*/DS_Store/*
+" set wildignore+=*/filecache/*
 """ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=*.pyc " For coding
 """ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -202,6 +237,7 @@ endif
 """ scrooloose/nerdtree """
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
+let NERDTreeShowLineNumbers=1
 map <F2> :NERDTreeToggle<CR>
 
 """ scrooloose/syntastic """
@@ -335,3 +371,13 @@ let g:indentLine_char = '¦'
 let g:indentLine_enabled = 1
 " autocmd Filetype json let g:indentLine_setConceal = 0
 let g:vim_json_syntax_conceal = 0
+
+""" hdima/python-syntax """
+" let g:python_highlight_all = 1
+
+
+""" Quramy/vim-js-pretty-template """
+call jspretmpl#register_tag('\/\*\s@html\s\*\/', 'html')
+
+""" jiangmiao/auto-pairs """
+au Filetype markdown let b:autopairs_enabled = 0

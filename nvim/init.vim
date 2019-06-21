@@ -16,8 +16,8 @@ let g:mapleader = ','
 """""""""""""""""""""""""""" Color Scheme and Theme """"""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if filereadable(expand("~/.config/nvim/plugin.vim"))
-source ~/.config/nvim/plugin.vim
+if filereadable(expand("~/.config/nvim/plugins/init.vim"))
+source ~/.config/nvim/plugins/init.vim
 endif
 
 if filereadable(expand("~/.config/nvim/colorscheme.vim"))

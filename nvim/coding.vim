@@ -30,7 +30,7 @@ au BufNewFile,BufRead *.py
   \ call MaxCharLine(&textwidth) |
   \ filetype indent on
 
-au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue,*.wxml,*.wxss,*json
+au BufNewFile,BufRead *.js,*.css,*.coffee,*.html,*.vue,*.wxml,*.wxss,*json,*.wjs
   \ set tabstop=2 |
   \ set softtabstop=2 |
   \ set shiftwidth=2 |
@@ -62,15 +62,16 @@ autocmd FileType vim
 " 编码设置为 utf-8
 set encoding=utf-8
 
-" python with virtualenv support
-py << eof
-import os
-import sys
-if 'virtual_env' in os.environ:
-  project_base_dir = os.environ['virtual_env']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-eof
+" " python with virtualenv support
+" py << eof
+" import os
+" import sys
+" if 'virtual_env' in os.environ:
+"   project_base_dir = os.environ['virtual_env']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" eof
+" endif
 
 " 添加一个指示器, 当单行字符数超过80个时提示
 "   echo "Long lines highlighted"
@@ -87,3 +88,7 @@ eof
 "   \ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "   \ match OverLength /\%81v.\+/
 
+" 担路小程序用
+autocmd BufRead,BufNewFile *.wjs setlocal filetype=javascript
+
+autocmd FileType javascript JsPreTmpl html

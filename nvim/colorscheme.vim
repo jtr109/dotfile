@@ -14,17 +14,21 @@ endif
 syntax enable
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-" let g:oceanic_next_highlight_current_line = 1
 " colorscheme OceanicNext
 color dracula
+" colorscheme onedark
+" set background=dark
+" colorscheme solarized
 
 """ custom highlight
 " hi CursorLineNR guifg=#ffffff "guibg=#1b2b34
 " hi diffRemoved ctermfg=231 ctermbg=NONE cterm=None guifg=#f1fa8c guibg=NONE gui=NONE
 hi Normal guibg=black
-hi link diffRemoved DiffDelete
-hi link diffAdded DiffAdd
+" hi link diffRemoved DiffDelete
+" hi link diffAdded DiffAdd
 
 """ airline """
 " let g:airline_theme='oceanicnext'
 let g:airline_theme='dracula'
+" let g:airline_theme='onedark'
+
