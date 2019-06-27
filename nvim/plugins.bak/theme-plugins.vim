@@ -1,0 +1,6 @@
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'joshdick/onedark.vim'
+Plug 'mhartington/oceanic-next'
