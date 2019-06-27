@@ -16,9 +16,9 @@ set termencoding=utf-8
 
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
 set scrolloff=3 
-" " 高亮当前行列, 十字光标
-set cursorline 
-set cursorcolumn
+" 高亮当前行列, 十字光标
+" set cursorline 
+" set cursorcolumn
 
 " vim 自身命令行模式智能补全
 set wildmenu
@@ -47,7 +47,7 @@ set clipboard=unnamed
 " :nnoremap <CR> :nohlsearch<CR><CR>
 
 " use mouse mode
-set mouse=a
+" set mouse=a
 
 """ search """
 " Case insensitive
@@ -68,13 +68,13 @@ set smartcase
 
 """"""""""""""""""" Config necessary for Vim only """"""""""""""""""""""""""""""
 " set backspace
-set backspace=indent,eol,start
+" set backspace=indent,eol,start
 
 " set font in MacVim
-if has('gui_macvim')
-  set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
-  " set guioptions
-  set guioptions-=r
-  set guioptions-=L
-  set guioptions-=T
-endif
+" if has('gui_macvim')
+"   set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+"   " set guioptions
+"   set guioptions-=r
+"   set guioptions-=L
+"   set guioptions-=T
+" endif
