@@ -1,3 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =2
 let g:netrw_dirhist_1='/Users/jtr109/mystuff/self_learning/play'
+let g:netrw_dirhist_2='/Users/jtr109/mystuff/self_learning/try_travis'

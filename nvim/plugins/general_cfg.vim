@@ -8,9 +8,10 @@ let g:UltiSnipsExpandTrigger="<c-b>"
 
 " NerdTree
 map <leader>t :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1  "默认显示隐藏文件
 
 " FZF
-let $FZF_DEFAULT_COMMAND = 'rg --files'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 map <leader>ff :Files<CR>
 map <leader>fr :Rg<CR>
 map <leader>ll :Buffers<CR>
