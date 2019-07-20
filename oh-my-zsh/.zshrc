@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -230,4 +230,3 @@ export CPPFLAGS="-I/usr/local/opt/readline/include"
 
 # for MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
