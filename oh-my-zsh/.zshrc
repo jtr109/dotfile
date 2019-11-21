@@ -7,7 +7,7 @@ ZSH_DISABLE_COMPFIX=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -64,10 +64,17 @@ export PATH=/usr/local/bin:$HOME/bin:$PATH
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh  # init with oh-my-zsh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_MONETARY=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -94,26 +101,9 @@ fi
 # # Brew bottle USTC mirror
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
-export PATH=$PATH:/usr/local/opt/redis-3.2.6/src
 export PATH=$PATH:/usr/local/mysql/bin
 
 alias proxychains4=/usr/local/opt/proxychains-ng/bin/proxychains4
-
-# for "ValueError: unknown locale: UTF-8"
-export LANG=en_US.UTF-8
-export LC_COLLATE=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_MESSAGES=en_US.UTF-8
-export LC_MONETARY=en_US.UTF-8
-export LC_NUMERIC=en_US.UTF-8
-export LC_TIME=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-# virtualenv for demlution project
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
-source /usr/local/bin/virtualenvwrapper.sh
 
 # add pg_config to PATH for psycopg2 installation
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin
@@ -159,74 +149,36 @@ function upall () {
 	ALL_PROXY=socks5://127.0.0.1:1080 brew upgrade
 	ALL_PROXY=socks5://127.0.0.1:1080 brew cu -a
 	brew cleanup
-	brew cask cleanup
+	# brew cask cleanup
 	# && brew cask outdated  # `brew cu` can be used now.
 	printf 'Finish at ' && date
 }
 
-# function upall () {
-# 	cd $HOME/.tmux && git pull && cd -
-# 	upgrade_oh_my_zsh
-# 	brew update && brew upgrade && brew cleanup && brew cask cleanup  # && brew cask outdated  # `brew cu` can be used now.
-# 	brew cu -a
-# }
-
-function rebup () {
-	git checkout master \
-	&& git pull upstream master \
-	&& git checkout - \
-	&& git rebase master
-}
-
-funtion cpr () {
-	git push --set-upstream origin $(git_current_branch)
-	# hub pull-request -o -b "demlution/bazaar4:master"
-	git remote get-url --push upstream | sed 's/^.*[\/:]\([^\/]*\)\/\([^\/]*\)\.git$/"\1\/\2:master"/g' | xargs hub pull-request -o -f -b
-}
 export PATH="/urs/local/opt/curl/bin:$PATH"
-
-
-# for bazaar4 build
-export SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
-export PHANTOMJS_CDNURL=https://npm.taobao.org/dist/phantomjs
 
 # add plugin autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-function build_env () {
-	/usr/local/bin/pg_ctl -D /usr/local/var/postgres start
-	# /usr/local/opt/redis-3.2.6/src/redis-server >/dev/null 2>&1 < /dev/null &
-        # docker run --name demlution-redis -p 6379:6379 -d redis redis-server
-	docker start demlution-redis
-	sudo /usr/local/bin/nginx -c /usr/local/etc/nginx/nginx.conf
-}
-
-function upgrade_nvim () {
-	cd /opt
-	sudo curl -LO --proxy 127.0.0.1:1087 https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-	sudo tar xzf ./nvim-macos.tar.gz
-	sudo rm ./nvim-macos.tar.gz
-	cd -
-}
-export PATH="/urs/local/opt/node@8/bin:$PATH"
-
-export demlution_root=$HOME/mystuff/demlution
-
-function update_dwapp_test () {
-	mkdir -p $demlution_root/temp
-	cp $demlution_root/dwapp_test/project.config.json $demlution_root/temp 2>/dev/null
-	rm -rf $demlution_root/dwapp_test
-	mkdir -p $demlution_root/dwapp_test
-	mv $demlution_root/temp/project.config.json $demlution_root/dwapp_test 2>/dev/null
-	cd $demlution_root/dwapp_test
-	ls -t $HOME/Downloads/*.zip | head -1 | xargs unzip 1>/dev/null
-	cd - 1>/dev/null
-}
-
-export PATH="/Users/jtr109/.cargo/bin:$PATH"
+# function upgrade_nvim () {
+# 	cd /opt
+# 	sudo curl -LO --proxy 127.0.0.1:1087 https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+# 	sudo tar xzf ./nvim-macos.tar.gz
+# 	sudo rm ./nvim-macos.tar.gz
+# 	cd -
+# }
 
 export LDFLAGS="-L/usr/local/opt/readline/lib"
 export CPPFLAGS="-I/usr/local/opt/readline/include"
 
 # for MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+# Docker
+alias dps="docker ps -q | xargs docker inspect --format '{{ .Id }} - {{ .Name }} - {{ .NetworkSettings.IPAddress }}'"
+
+# starship initialization
+eval "$(starship init zsh)"
+
+# add pyenv python PATH
+export PATH="/Users/username/.pyenv:$PATH"
+eval "$(pyenv init -)"

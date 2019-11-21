@@ -18,7 +18,7 @@ map <leader>ll :Buffers<CR>
 
 " ALE
 let g:ale_close_preview_on_insert = 1
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1        "左侧标记栏常驻
 map <leader>gd :ALEGoToDefinition<CR>
 map <leader>en :ALENext<CR>
