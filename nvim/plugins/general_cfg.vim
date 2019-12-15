@@ -33,3 +33,7 @@ map <leader><leader>j <Plug>(easymotion-j)
 map <leader><leader>k <Plug>(easymotion-k)
 map <leader><leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+" Coc.nvim
+" https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-the-completion-experience
+inoremap <expr> <tab> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

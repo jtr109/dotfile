@@ -1,3 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/jtr109/mystuff/learn/rust/play'
+let g:netrw_dirhist_6='/Users/jtr109/mystuff/ucloud/django-jaeger-middleware'
+let g:netrw_dirhist_5='/Users/jtr109/mystuff/ucloud/safegate'
+let g:netrw_dirhist_4='/Users/jtr109/mystuff/learn/rust/play'
+let g:netrw_dirhist_3='/Users/jtr109/mystuff/ucloud/data-masker'
+let g:netrw_dirhist_2='/Users/jtr109/mystuff/learn/rust/play'
 let g:netrw_dirhist_1='/Users/jtr109/mystuff/self_learning/play'
