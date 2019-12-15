@@ -37,3 +37,7 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 " Coc.nvim
 " https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-the-completion-experience
 inoremap <expr> <tab> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Python Provider
+let g:python_host_prog="$HOME/.config/nvim/venv/bin/python2.7"
+let g:python3_host_prog="$HOME/.config/nvim/venv3/bin/python3"
