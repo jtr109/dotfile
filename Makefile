@@ -1,7 +1,7 @@
 .PHONY: config, fish
 
 config:
-	ln -s $(PWD)/.config $(HOME)/.config
+	ln -s $(PWD)/.config/ $(HOME)/.config
 
 fish:
 	apt install fish
