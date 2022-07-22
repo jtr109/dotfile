@@ -59,10 +59,14 @@ Plug 'romainl/vim-cool'
 " using Ctrl-n to select same words under cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+" auto complete pairs
+Plug 'jiangmiao/auto-pairs'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " # color theme {{{
 " Plug 'overcache/NeoSolarized'
 " }}}
+
 
 call plug#end()
 
