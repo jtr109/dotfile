@@ -1,9 +1,9 @@
 .PHONY: config, fish, nvim, tldr, install-zsh
 
 install-neovim: nvim.appimage
-	mkdir -p $(HOME)/bin
+	mkdir -p $(HOME)/.local/bin
 	rm -f $(HOME)/bin/nvim
-	ln -s $(PWD)/nvim.appimage $(HOME)/bin/nvim
+	ln -s $(PWD)/nvim.appimage $(HOME)/.local/bin/nvim
 
 nvim.appimage:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
