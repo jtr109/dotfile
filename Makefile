@@ -1,4 +1,4 @@
-.PHONY: config, fish, nvim
+.PHONY: config, fish, nvim, tldr
 
 config:
 	ln -s $(PWD)/.config/ $(HOME)/.config
@@ -20,3 +20,7 @@ nvim:
 	  mv $(HOME)/.config/nvim $(HOME)/.config/nvim.bak; \
 	fi
 	ln -s $(PWD)/.config/nvim $(HOME)/.config/nvim
+
+tldr:
+	apt install python3-pip
+	pip3 install tldr
