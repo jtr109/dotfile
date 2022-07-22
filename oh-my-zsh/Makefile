@@ -12,11 +12,14 @@ endif
 	apt install zsh
 	chsh -s $$(which zsh)
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+config:
 	# config
 	if [ -f $(HOME)/.zshrc ]; then \
+	  rm $(HOME)/.zshrc.bak; \
 	  mv $(HOME)/.zshrc $(HOME)/.zshrc.bak; \
 	fi
-	ln -s $(PWD)/oh-my-zsh/.zshrc $(HOME)/.zshrc
+	ln -s $(PWD)/.zshrc $(HOME)/.zshrc
 	# plugin: autosuggestions
 	git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-$$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
@@ -33,6 +36,7 @@ endif
 	  mv $$HOME/.zshrc.bak $$HOME/.zshrc; \
 	fi
 	if [ -d $(HOME)/.oh-my-zsh ]; then \
+	  rm -rf $$HOME/.oh-my-zsh.bak; \
 	  mv $$HOME/.oh-my-zsh $$HOME/.oh-my-zsh.bak; \
 	fi
 	if [ -d /root/.oh-my-zsh ]; then \
