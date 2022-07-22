@@ -54,8 +54,9 @@ ZSH_DISABLE_COMPFIX=true
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  osx
+  #osx
   rust
+  zsh-autosuggestions
 )
 
 # User configuration
@@ -111,9 +112,9 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin
 # alias ctags="`brew --prefix`/bin/ctags"
 
 # alias for thefuck
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
+# eval $(thefuck --alias FUCK)
 
 # Proxy for Homebrew
 # It will make an error for pip
@@ -156,9 +157,6 @@ function upall () {
 
 export PATH="/urs/local/opt/curl/bin:$PATH"
 
-# add plugin autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # function upgrade_nvim () {
 # 	cd /opt
 # 	sudo curl -LO --proxy 127.0.0.1:1087 https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
@@ -176,9 +174,13 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Docker
 alias dps="docker ps -q | xargs docker inspect --format '{{ .Id }} - {{ .Name }} - {{ .NetworkSettings.IPAddress }}'"
 
-# starship initialization
-eval "$(starship init zsh)"
+# initialize starship prompt
+if command -v starship; then
+  eval "$(starship init zsh)"
+fi
 
 # add pyenv python PATH
 export PATH="/Users/username/.pyenv:$PATH"
-eval "$(pyenv init -)"
+if command -v pyenv; then
+  eval "$(pyenv init -)"
+fi
