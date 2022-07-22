@@ -184,3 +184,7 @@ export PATH="/Users/username/.pyenv:$PATH"
 if command -v pyenv; then
   eval "$(pyenv init -)"
 fi
+
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
